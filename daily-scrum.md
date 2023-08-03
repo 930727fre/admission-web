@@ -1,7 +1,7 @@
 | Date | Chuang | Chen | Wang |
 |------|--------|------|------|
 | 8/1  |learn sqlite basic syntax/ install ci4 on ubuntu(unfinished)/ read ci4 docs| NULL     | review git and workshop's conten|
-| 8/2  |        |      |      |
+| 8/2  |NULL|NULL      |NULL      |
 | 8/3  |        |      |      |
 | 8/4  |        |      |      |
 | 8/5  |        |      |      |
