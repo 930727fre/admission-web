@@ -2,8 +2,8 @@
 |------|--------|------|------|
 | 8/1  |learn sqlite syntax/ install ci4 on ubuntu(unfinished)/ read ci4 docs| NULL| review git and workshop's conten|
 | 8/2  |NULL|NULL|NULL|
-| 8/3  |ci4.pdf|grade upload system |      |
-| 8/4  |        |      |      |
+| 8/3  |read ci4.pdf|grade upload system |NULLneof|
+| 8/4  |migrate db, sign-in page|NULL|figure out front-end and back-end knowledge|
 | 8/5  |        |      |      |
 | 8/6  |        |      |      |
 | 8/7  |        |      |      |
