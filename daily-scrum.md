@@ -4,7 +4,7 @@
 | 8/2  |NULL|NULL|NULL|
 | 8/3  |read ci4.pdf|grade upload system |NULLneof|
 | 8/4  |migrate db, sign-in page|NULL|figure out front-end and back-end knowledge|
-| 8/5  |        |      |      |
+| 8/5  |migrate db, study session mechanism, redirectTo()|setup environment|menu, nav bar|
 | 8/6  |        |      |      |
 | 8/7  |        |      |      |
 | 8/8  |        |      |      |
