@@ -1,10 +1,10 @@
 | Date | Chuang | Chen | Wang |
 |------|--------|------|------|
-| 8/1  |learn sqlite syntax/ install ci4 on ubuntu(unfinished)/ read ci4 docs| NULL| review git and workshop's conten|
+| 8/1  |learn sqlite syntax/ install ci4 on ubuntu(unfinished)/ read ci4 docs| NULL| review git and workshop's content|
 | 8/2  |NULL|NULL|NULL|
-| 8/3  |read ci4.pdf|grade upload system |NULLneof|
-| 8/4  |migrate db, sign-in page|NULL|figure out front-end and back-end knowledge|
-| 8/5  |migrate db, study session mechanism, redirectTo()|setup environment|menu, nav bar|
+| 8/3  |read ci4.pdf|grade upload system 4hr|NULL|
+| 8/4  |migrate db, sign-in page 3hr|NULL|learn front-end and back-end knowledge|
+| 8/5  |migrate db, study session mechanism, redirectTo()|setup environment|study menu, nav bar|
 | 8/6  |        |      |      |
 | 8/7  |        |      |      |
 | 8/8  |        |      |      |
