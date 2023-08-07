@@ -31,7 +31,11 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
 $routes->get('idController', 'idController::index');
-$routes->get('idController/signIn', 'idController::singIn');
+$routes->get('signIn', 'idController::signIn');
+$routes->get('register','idController::register');
+$routes->get('signOut',"idController::signOut");
+$routes->get("test1","idController::test1");
+// $routes->get("","idController::");
 
 /*
  * --------------------------------------------------------------------

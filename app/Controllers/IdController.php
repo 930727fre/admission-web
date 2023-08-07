@@ -11,10 +11,10 @@ class IdController extends BaseController
     {
         return view('id/index.php');
     }
-    public function redirectTo(){
-        return view("id/{$this->request->getVar('where')}.php");
-    }
     public function signIn(){
+        return view("id/signIn.php");
+    }
+    public function validateAccount(){
         $model=new SignModel();
         $data=[
             'username'=>$this->request->getVar('username'),
@@ -24,17 +24,19 @@ class IdController extends BaseController
             if(($model->where('username',$data['username'])->first())['password']===$data['password']){
                 session_start();
                 $_SESSION['username']=$data['username'];
+                $_SESSION['signedIn']=true;
                 return view("id/profile.php");
             }
         }
-        else{
             // echo "<script>alert('" . 錯誤username或密碼 . "');</script>";
-            echo "wrong";
-        }
+        echo "wrong";
 
     }
     public function register()
     {
+        return view("id/register.php");
+    }
+    public function createAccount(){
         $model=new SignModel(); 
         $data=[
             'identity'=>$_POST['identity'],
@@ -69,8 +71,12 @@ class IdController extends BaseController
             return 'available';
         }
     }
-    public function singOut(){
-
-        
+    public function signOut(){
+        session_start();
+        session_destroy();
+        $_SESSION = array(); 
+        return view("id/index.php");
     }
+
+
 }

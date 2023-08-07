@@ -7,7 +7,7 @@
 </head>
 <body>
     <h1>User Registration</h1>
-    <form action="/idController/register" enctype="multipart/form-data" method="post">
+    <form action="/idController/createAccount" enctype="multipart/form-data" method="post">
     <!-- "/idController/register" -->
         <h1>註冊帳號</h1>
         <label for="identity">身份: </label>

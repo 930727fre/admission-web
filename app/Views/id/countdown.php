@@ -5,7 +5,7 @@
     <title>Redirect with Countdown</title>
 </head>
 <body>
-    <h1>Success! Redirecting in <span id="countdown">3</span> seconds...</h1>
+    <h1>註冊成功! Redirecting in <span id="countdown">3</span> seconds...</h1>
 
     <script>
         // Function to update the countdown and redirect
