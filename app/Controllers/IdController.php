@@ -20,12 +20,21 @@ class IdController extends BaseController
             'username'=>$this->request->getVar('username'),
             'password'=>$this->request->getVar('password')
         ]; 
+        if($model->where('username',$data['username'])->first()){
+            if(($model->where('username',$data['username'])->first())['password']===$data['password']){
+                session_start();
+                $_SESSION['username']=$data['username'];
+                return view("id/profile.php");
+            }
+        }
+        else{
+            // echo "<script>alert('" . 錯誤username或密碼 . "');</script>";
+            echo "wrong";
+        }
 
     }
     public function register()
-    {   
-
-        // print_r($_POST);
+    {
         $model=new SignModel(); 
         $data=[
             'identity'=>$_POST['identity'],
@@ -60,7 +69,8 @@ class IdController extends BaseController
             return 'available';
         }
     }
-    public function singIn(){
+    public function singOut(){
+
         
     }
 }
