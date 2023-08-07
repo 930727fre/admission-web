@@ -5,8 +5,8 @@
 | 8/3  |read ci4.pdf|grade upload system 4hr|NULL|
 | 8/4  |migrate db, sign-in page 3hr|NULL|learn front-end and back-end knowledge|
 | 8/5  |migrate db, study session mechanism, redirectTo()|setup environment|study menu, nav bar|
-| 8/6  |        |time restriction system, empty pages|nav bar|
-| 8/7  |        |      |      |
+| 8/6  |studdy session mechanism, setup environment|time restriction system, empty pages|nav bar|
+| 8/7  |add identity column, countdown redirect, repeating username warning|      |      |
 | 8/8  |        |      |      |
 | 8/9  |        |      |      |
 | 8/10 |        |      |      |
