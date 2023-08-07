@@ -8,7 +8,7 @@
 | 8/6  |studdy session mechanism, setup environment|time restriction system, empty pages|nav bar|
 | 8/7  |add identity column, countdown redirect, repeating username warning|setup environment|index.html|
 | 8/8  |        |      |      |
-| 8/9  |        |      |      |
+| 8/9  |         |      |      |
 | 8/10 |        |      |      |
 | 8/11 |        |      |      |
 | 8/12 |        |      |      |
