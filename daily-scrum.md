@@ -9,7 +9,7 @@
 | 8/7  |add identity column, countdown redirect, repeating username warning|setup environment|index.html|
 | 8/8  |        |      |      |
 | 8/9  |        |      |      |
-| 8/10 |        |      |      |
+| 8/10 |         |      |      |
 | 8/11 |        |      |      |
 | 8/12 |        |      |      |
 | 8/13 |        |      |      |
