@@ -1,25 +1,42 @@
-<?php
-    // require $_SERVER['DOCUMENT_ROOT'] .'/../vendor/autoload.php';
-?>
-<html>
-<head>
-    <title>Email Form</title>
-    <link rel="stylesheet" href="https://classless.de/classless.css">
+<link href='sakura.css' id="sakura-css" rel='stylesheet' type='text/css'>
+<section>
+    <form action="/idController/validateAccount" enctype="multipart/form-data" method="post">
 
-</head>
-<body>
-    <h1>Email Form</h1>
-    <form action="/idController/test2" method="POST">
-        <label for="recipient">Recipient:</label>
-        <input type="email" name="mail" required><br>
+        <label for="username">Username: </label>
+        <input type="text" name="username" id="username" required><br>
+        <label for="password">Password: </label>
+        <input type="password" name="password" id="password" required><br>
+        <a href="/forgetPassword">忘記密碼</a><br>
+        <input type="submit">
 
-        <label for="subject">Subject:</label>
-        <input type="text" name="subject" required><br>
-
-        <label for="message">Message:</label><br>
-        <textarea name="message" rows="6" cols="40" required></textarea><br>
-
-        <input type="submit" value="Send Email">
     </form>
-</body>
-</html>
+</section>
+
+<!-- <header>
+    <nav>
+        <h1><a href="#">💡Ideanator</a></h1>
+        <ul>
+            <li>Product</li>
+            <li><a href="#">Services</a></li>
+            <li>
+                <a href="#">Learn more</a>
+                <ul>
+                    <li><a href="#">About us</a></li>
+                    <li><a href="#">Contact us</a></li>
+                    <li><a href="#">Get help</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    <article>
+        <aside>
+            <center>🏷 End of the year sale - <b>60% OFF</b> ON ALL SERVICES</center>
+        </aside>
+    </article>
+    <br><br>
+    <sup>MADE WITH ❤️&nbsp; IN MY BACKYARD</sup>
+    <h1>Where ideas <mark>thrive</mark> with <code>code</code>.</h1>
+    <p>We are world's <b>#1</b> idea building company 💡 coding all night long 👨🏻‍💻</p>
+    <br>
+    <p><a href="#"><i>Get Quote</i></a><a href="#"><b>Get Started &rarr;</b></a></p>
+</header> -->

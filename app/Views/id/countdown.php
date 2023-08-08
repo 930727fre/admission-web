@@ -7,7 +7,7 @@
 
 </head>
 <body>
-    <h1><?php echo $message; ?> Redirect in <span id="countdown">3</span> seconds...</h1>
+    <h1><?php echo $message."<br>"; ?> Redirect in <span id="countdown">3</span> seconds...</h1>
 
     <script>
         // Function to update the countdown and redirect

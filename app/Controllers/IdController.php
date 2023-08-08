@@ -92,7 +92,7 @@ class IdController extends BaseController
             return view("id/countdown.php",array("message"=>"驗證成功！已修改密碼"));
         }
         else{
-            return view("id/countdown.php",array("message"=>"驗證失敗","url"=>"idController/test2"));
+            return view("id/countdown.php",array("message"=>"驗證失敗","url"=>"forgetPassword"));
         }
     }
     public function sendMail(){
@@ -124,7 +124,7 @@ class IdController extends BaseController
         $mail->Body = "驗證碼：".$verificationCode;
         $mail->AddAddress($to);
         if(!$mail->Send()) {
-            return view("id/countdown.php",array("message"=>"invalid email"));
+            return view("id/countdown.php",array("message"=>"invalid email🥵","url"=>"forgetPassword"));
     
         } else {
             ob_end_clean();
