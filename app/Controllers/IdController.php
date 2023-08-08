@@ -24,7 +24,7 @@ class IdController extends BaseController
             'password'=>$this->request->getVar('password')
         ]; 
         if($model->where('username',$data['username'])->first()){
-            if(($model->where('username',$data['username'])->first())['password']===hash("sha256",$data['password'])){
+            if(($model->where('username',$data['username'])->first())['password']==hash("sha256",$data['password'])){
                 session_start();
                 $_SESSION['username']=$data['username'];
                 $_SESSION['signedIn']=true;
@@ -87,7 +87,7 @@ class IdController extends BaseController
     public function changePassword(){
         if($_POST['verificationCode']==$_POST["input"]){
             $model = new SignModel(); // Replace this with the actual model representing your users
-            $model->where("username",$_POST['username'])->set(array("password"=>$_POST['password']))->update();
+            $model->where("username",$_POST['username'])->set(array("password"=>hash("sha256",$_POST['password'])))->update();
 
             return view("id/countdown.php",array("message"=>"驗證成功！已修改密碼"));
         }
@@ -110,7 +110,7 @@ class IdController extends BaseController
         $from="930727fre@gmail.com";
         $model = new SignModel();
         $to=($model->where('username', $_POST['username'])->first())['mail'];
-        $fromPassword="ywcelhgwnkqahpkr";
+        $fromPassword=getenv("API_KEY");
         $mail->SMTPDebug = 1; // debugging: 1 = errors and messages, 2 = messages only
         $mail->SMTPAuth = true; // authentication enabled
         $mail->SMTPSecure = 'ssl'; // secure transfer enabled REQUIRED for Gmail
@@ -128,7 +128,7 @@ class IdController extends BaseController
     
         } else {
             ob_end_clean();
-            return view("id/inputVerificationCode.php",array("verificationCode"=>$verificationCode,"username"=>$_POST['username']));
+            return view("id/inputVerificationCode.php",array("verificationCode"=>$verificationCode,"username"=>$_POST['username'],"mail"=>$to));
         }        
     }
 }
