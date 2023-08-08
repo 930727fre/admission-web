@@ -24,7 +24,7 @@ class IdController extends BaseController
             'password'=>$this->request->getVar('password')
         ]; 
         if($model->where('username',$data['username'])->first()){
-            if(($model->where('username',$data['username'])->first())['password']===$data['password']){
+            if(($model->where('username',$data['username'])->first())['password']===hash("sha256",$data['password'])){
                 session_start();
                 $_SESSION['username']=$data['username'];
                 $_SESSION['signedIn']=true;
@@ -46,7 +46,7 @@ class IdController extends BaseController
             'fullname'=>$_POST['fullname'],
             'mail'=>$_POST['mail'],
             'username'=>$_POST['username'],
-            'password'=>$_POST['password']
+            'password'=>hash("sha256",$_POST['password'])
         ];
         $YN=$model->save($data);
         // print_r($YN);
