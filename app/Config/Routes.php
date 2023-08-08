@@ -35,6 +35,11 @@ $routes->get('signIn', 'idController::signIn');
 $routes->get('register','idController::register');
 $routes->get('signOut',"idController::signOut");
 $routes->get("test1","idController::test1");
+$routes->get("sendMail","idController::sendMail");
+$routes->get("forgetPassword","idController::forgetPassword");
+$routes->get("changePassword","idController::changePassword");
+
+
 // $routes->get("","idController::");
 
 /*

@@ -6,8 +6,8 @@
 | 8/4  |migrate db, sign-in page 3hr|NULL|learn front-end and back-end knowledge|
 | 8/5  |migrate db, study session mechanism, redirectTo()|setup environment|study menu, nav bar|
 | 8/6  |studdy session mechanism, setup environment|time restriction system, empty pages|nav bar|
-| 8/7  |add identity column, countdown redirect, repeating username warning|setup environment|index.html|
-| 8/8  |signIn and registeration system|      |      |
+| 8/7  |add identity column, countdown redirection, repeating username warning|setup environment|index.html|
+| 8/8  |signIn and registeration system, session, routing|      |      |
 | 8/9  |        |      |      |
 | 8/10 |        |      |      |
 | 8/11 |        |      |      |

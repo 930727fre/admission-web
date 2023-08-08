@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Redirect with Countdown</title>
+    <link rel="stylesheet" href="https://classless.de/classless.css">
+
 </head>
 <body>
-    <h1>註冊成功! Redirecting in <span id="countdown">3</span> seconds...</h1>
+    <h1><?php echo $message; ?> Redirect in <span id="countdown">3</span> seconds...</h1>
 
     <script>
         // Function to update the countdown and redirect
@@ -19,7 +21,7 @@
                 setTimeout(updateCountdown, 1000); // Call this function again after 1 second
             } else {
                 // Perform the redirect after the countdown is finished
-                window.location.replace("/idController");
+                window.location.replace("<?php if(isset($url)){echo $url;}else{echo "/idController";} ?>");
             }
         }
 

@@ -1,23 +1,25 @@
-<!DOCTYPE html>
+<?php
+    // require $_SERVER['DOCUMENT_ROOT'] .'/../vendor/autoload.php';
+?>
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>php圖形驗證碼</title>
-   
-    <script>
-        function refresh_code(){ 
-            document.getElementById("imgcode").src="/captcha"; 
-        } 
-    </script>
-    
+    <title>Email Form</title>
+    <link rel="stylesheet" href="https://classless.de/classless.css">
+
 </head>
 <body>
-    <form name="form1" method="post" action="/checkCaptchacode">
-        <p>請輸入下圖字樣：</p><p><img id="imgcode" src="/captcha" onclick="refresh_code()" /><br />
-           點擊圖片可以更換驗證碼
-        </p>
-        <input type="text" name="checkword" size="10" maxlength="10" />
-        <input type="submit" name="Submit" value="送出" />
+    <h1>Email Form</h1>
+    <form action="/idController/test2" method="POST">
+        <label for="recipient">Recipient:</label>
+        <input type="email" name="mail" required><br>
+
+        <label for="subject">Subject:</label>
+        <input type="text" name="subject" required><br>
+
+        <label for="message">Message:</label><br>
+        <textarea name="message" rows="6" cols="40" required></textarea><br>
+
+        <input type="submit" value="Send Email">
     </form>
 </body>
 </html>

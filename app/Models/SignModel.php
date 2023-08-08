@@ -17,6 +17,7 @@ class SignModel extends Model
         'serialNumber',
         'identity',
         'fullname',
+        'mail',
         'username',
         'password'
     ];
