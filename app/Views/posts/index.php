@@ -12,15 +12,7 @@
         <button>個人資料上傳</button>
     </a>
     <br>
-    <a href="/PostController/redirectTo?where=post">
+    <a href="/PostController/redirectTo?where=creatPost">
         <button>文章上傳</button>
-    </a>
-    <h2>test<h2>
-    <a href="/PostController/redirectTo?where=student">
-        <button>學生</button>
-    </a>
-    <br>
-    <a href="/PostController/redirectTo?where=professor">
-        <button>教授</button>
     </a>
 </div>

@@ -12,6 +12,8 @@ class IdController extends BaseController
         return view('id/index.php');
     }
     public function redirectTo(){
+        if($this->request->getVar('where')=='revise')
+            return redirect('ReviseController');
         return view("id/{$this->request->getVar('where')}.php");
     }
     public function signIn(){

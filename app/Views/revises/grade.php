@@ -1,7 +1,6 @@
 <div style = "text -align : center">
     <h1>上傳成績</h1>
-    
-    <form action="/PostController/grade_store" enctype="mutipart/form-data" method="POST">
+    <form action="/ReviseController/gradeStore" enctype="mutipart/form-data" method="POST">
         <span>國文：</span> <input name = "Chinese" type="number" min="0" max="15"> <br>
         <span>英文：</span> <input name = "English" type="number" min="0" max="15"> <br>
         <span>數學：</span> <input name = "Math" type="number" min="0" max="15"> <br>

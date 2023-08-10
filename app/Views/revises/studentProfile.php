@@ -1,7 +1,7 @@
 <div style = "text -align : center">
     <h1>個人資料修改</h1>
     
-    <form action="/PostController/profile_store" enctype="mutipart/form-data" method="POST">
+    <form action="/PostController/profileStore" enctype="mutipart/form-data" method="POST">
         <span>姓名：</span> //show name <br>
         <span>身分證字號：</span> <input name = "English"> <br>
         <span>就讀學校：</span> <input name = "Math"> <br>

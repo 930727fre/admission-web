@@ -32,6 +32,8 @@ $routes->setAutoRoute(true);
 $routes->get('/', 'Home::index');
 $routes->get('idController', 'idController::index');
 $routes->get('idController/signIn', 'idController::singIn');
+$routes->get('PostController', 'PostController::index');
+$routes->get('ReviseController', 'ReviseController::index');
 
 /*
  * --------------------------------------------------------------------
