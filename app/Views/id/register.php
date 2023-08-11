@@ -1,14 +1,14 @@
-
 <!DOCTYPE html>
 <html>
 <head>
     <title>User Registration</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://classless.de/classless.css">
+
 </head>
 <body>
     <h1>User Registration</h1>
-    <form action="/idController/register" enctype="multipart/form-data" method="post">
-    <!-- "/idController/register" -->
+    <form action="/idController/createAccount" enctype="multipart/form-data" method="post">
         <h1>註冊帳號</h1>
         <label for="identity">身份: </label>
         <select name="identity" id="identity">
@@ -16,11 +16,16 @@
             <option value="student">學生</option>
         </select>
         <br>
+
+
         <label for="fullname">姓名: </label>
-        <input type="text" name="fullname" id="fullname" required><br>
-        <label for="username">Username: </label>
-        <input type="text" name="username" id="username" required>
-        <span id="username_warning" style="color: red;"></span><br>
+        <input type="text" name="fullname" id="fullname" required><br>  
+        <label for="username" id="usernameLabel">
+            Username: <span id="username_warning" style="color: red;"></span>
+        </label>
+        <input type="text" name="username" id="username" required><br>              
+        <label for="mail">Mail: </label>
+        <input type="email" name="mail" id="mail" required> <br>
 
         <label for="password">密碼: </label>
         <input type="password" name="password" id="password" required><br>
@@ -40,10 +45,12 @@
                         data: { username: username },
                         success: function (data) {
                             if (data === 'taken') {
-                                $('#username_warning').text('Username is already taken. Please choose a different username.');
+                                $('#username_warning').text('Username used. Please choose another one.');
+                                $('#usernameLabel').addClass('disabled-label'); // Add a class to the label
                                 $('#register_button').prop('disabled', true); // Disable the button
                             } else {
                                 $('#username_warning').text('');
+                                $('#usernameLabel').removeClass('disabled-label'); // Remove the class from the label
                                 $('#register_button').prop('disabled', false); // Enable the button
                             }
                         }

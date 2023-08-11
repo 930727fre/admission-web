@@ -23,7 +23,9 @@
             title_button.value="儲存";
             title.disabled = false;
             element.textContent="取消";
+            element.
             confirm_button.appendChild(element);
+
         }
         else
         {

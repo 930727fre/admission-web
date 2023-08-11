@@ -24,6 +24,10 @@ class Template extends Migration
                     'type'=>'VARCHAR',
                     'constraint'=>'50'
                 ],
+                'mail'=>[
+                    'type'=>'VARCHAR',
+                    'constraint'=>'50'
+                ],                
                 'username'=>[
                     'type'=>'VARCHAR',
                     'constraint'=>'50'
