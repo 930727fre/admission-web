@@ -10,7 +10,7 @@
 | 8/8  |phpmail, signIn and registeration system, session, routing|NULL|php controller and study ci4|
 | 8/9  |NULL|study php|programming several pages|
 | 8/10 |NULL|session implementation| |
-| 8/11 |        |      |      |
+| 8/11 |git merge, discuss migration|git merge, discuss migration|downloadable link|
 | 8/12 |        |      |      |
 | 8/13 |        |      |      |
 | 8/14 |        |      |      |
