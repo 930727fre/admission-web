@@ -12,26 +12,47 @@
 </div>
 
 <script>
+    var str1;
+
     function revise_title()
     {
-        let title = document.getElementById("title");
-        let title_button = document.getElementById("title_button");
+        var title = document.getElementById("title");
+        var title_button = document.getElementById("title_button");
         var confirm_button = document.querySelector('.confirm_button');
-        var element =document.createElement('input');
+        var element = document.createElement('input');
+        str1 =title.value;
         if (title_button.value=="修改")
         {
             title_button.value="儲存";
             title.disabled = false;
-            element.textContent="取消";
-            element.
+            element.setAttribute('type','button');
+            element.setAttribute('value','取消');
+            element.setAttribute('id','cancel');
+            element.setAttribute('onclick','cancel_button()');
             confirm_button.appendChild(element);
-
         }
-        else
+        else if(title_button.value == "儲存")
         {
+            if(confirm_button.children.length)
+            {
+                var element = document.getElementById('cancel');
+                confirm_button.removeChild(element);
+            }
             title_button.value="修改";
             title.disabled = true;
-        }
-            
+        }   
+    }
+
+    function cancel_button()
+    {
+        var element = document.getElementById('cancel');
+        var confirm_button = document.querySelector('.confirm_button');
+        var title_button = document.getElementById("title_button");
+        var title = document.getElementById("title");
+        title_button.value = "修改";
+        title.value = str1;
+        title.disabled = true;
+        confirm_button.removeChild(element);
+        return;
     }
 </script>

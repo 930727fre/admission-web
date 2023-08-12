@@ -6,6 +6,7 @@ use App\Controllers\BaseController;
 use App\Models\SignModel;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
+use CodeIgniter\Session\Session;
 
 
 class IdController extends BaseController
@@ -25,15 +26,25 @@ class IdController extends BaseController
         ]; 
         if($model->where('username',$data['username'])->first()){
             if(($model->where('username',$data['username'])->first())['password']==hash("sha256",$data['password'])){
-                session_start();
-                $_SESSION['username']=$data['username'];
-                $_SESSION['signedIn']=true;
-                return view("id/profile.php");
+                //session_start();
+                //$_SESSION['username']=$data['username'];
+                //$_SESSION['signedIn']=true;
+                $session = session();
+                $sessiondata = [
+                    'username'  => $data['username'],
+                    'loggedIn' => true,
+                ];
+                $session->set($sessiondata);
+                return redirect()->to("idController/logIn");
             }
         }
             // echo "<script>alert('" . 錯誤username或密碼 . "');</script>";
         return view("id/signIn.php",array("message"=>"密碼輸入錯誤"));
 
+    }
+    public function logIn()
+    {
+        return view("id/profile.php");
     }
     public function register()
     {
@@ -76,9 +87,11 @@ class IdController extends BaseController
         }
     }
     public function signOut(){
-        session_start();
-        session_destroy();
-        $_SESSION = array(); 
+        //session_start();
+        //session_destroy();
+        //$_SESSION = array(); 
+        $session = session();
+        $session->destroy();
         return view("id/index.php");
     }
     public function forgetPassword(){
