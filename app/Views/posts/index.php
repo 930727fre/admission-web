@@ -1,5 +1,5 @@
 <div>
-    <h1>資料上傳專區</h1>
+    <h1>文章上傳專區</h1>
     <a href="/PostController/redirectTo?where=grade">
         <button>成績上傳</button>
     </a>

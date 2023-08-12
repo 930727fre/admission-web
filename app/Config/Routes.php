@@ -44,7 +44,8 @@ $routes->get("changePassword","idController::changePassword");
 $routes->get('idController/signIn', 'idController::singIn');
 $routes->get('PostController', 'PostController::index');
 $routes->get('ReviseController', 'ReviseController::index');
-
+$routes->get('UploadController', 'UploadController::index');
+$routes->get("uploadForm","UploadController::uploadForm");
 /*
  * --------------------------------------------------------------------
  * Additional Routing

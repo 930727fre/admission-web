@@ -30,19 +30,19 @@ class IdController extends BaseController
                 //$_SESSION['username']=$data['username'];
                 //$_SESSION['signedIn']=true;
                 $session = session();
-                $sessiondata = [
+                $sessionData = [
                     'username'  => $data['username'],
                     'loggedIn' => true,
                 ];
-                $session->set($sessiondata);
-                return redirect()->to("idController/logIn");
+                $session->set($sessionData);
+                return redirect()->to("idController/signInPage");
             }
         }
             // echo "<script>alert('" . 錯誤username或密碼 . "');</script>";
         return view("id/signIn.php",array("message"=>"密碼輸入錯誤"));
 
     }
-    public function logIn()
+    public function signInPage()
     {
         return view("id/profile.php");
     }

@@ -1,6 +1,6 @@
 <?php
-    session_start();
     use CodeIgniter\Session\Session;
+    session_start();
 ?>
 <link rel="stylesheet" href="https://classless.de/classless.css">
 
