@@ -49,4 +49,8 @@ class UploadController extends BaseController
         $fileModel->where('department','中正數學系');
         $fileModel->delete();
     }
+    public function reset()
+    {
+        
+    }
 }

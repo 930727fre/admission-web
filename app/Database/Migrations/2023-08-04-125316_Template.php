@@ -220,6 +220,33 @@ class Template extends Migration
         $this->forge->addKey('id',True);
         $this->forge->createTable('adminIdentity');
 
+        $this->forge->addField(
+            [   
+                'month'=>[
+                    'type'=>'INT',
+                    'constraint'=>10000,
+                ],
+                'day'=>[
+                    'type'=>'INT',
+                    'constraint'=> 100000
+                ],
+                'hour'=>[
+                    'type'=>'INT',
+                    'constraint'=>10000,
+                ],
+                'minute'=>[
+                    'type'=>'INT',
+                    'constraint'=> 10000
+                ],
+                'second'=>[
+                    'type'=>'INT',
+                    'constraint'=>10000,
+                ]
+            ]
+        );
+        $this->forge->addKey('id',True);
+        $this->forge->createTable('time');
+
         $this->db->query("INSERT INTO adminIdentity (username, password) VALUES ('f', 'f');");
         $this->db->query("INSERT INTO adminIdentity (username, password) VALUES ('s', 's');");
         $this->db->query("INSERT INTO post (username, title, content, contentCSS)VALUES ('f', 'title1', 'hello world你好', '');");
