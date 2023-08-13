@@ -41,9 +41,9 @@ $routes->get("changePassword","idController::changePassword");
 
 
 // $routes->get("","idController::");
-$routes->get('idController/signIn', 'idController::singIn');
 $routes->get('PostController', 'PostController::index');
 $routes->get('ReviseController', 'ReviseController::index');
+$routes->get("redirectTo","idController::redirectTo");
 
 /*
  * --------------------------------------------------------------------

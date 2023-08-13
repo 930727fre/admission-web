@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\SignModel;
+use App\Models\PostModel;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 use CodeIgniter\Session\Session;
@@ -52,6 +53,25 @@ class IdController extends BaseController
     }
     public function createAccount(){
         $model=new SignModel(); 
+
+        if($_POST['identity']=="student"){
+            $data = [
+                "username" => $_POST["username"],
+                "password" => $_POST["password"],
+                "mail" => $_POST["mail"],
+                "idCard" => $_POST["idCard"],
+                "fullname" => $_POST["fullname"],
+                "school" => $_POST["school"],
+                "phoneNumber" => $_POST["phoneNumber"],
+                "relationship" => $_POST["relationship"],
+                "guardian" => $_POST["guardian"],
+                "phoneNumberOfGuardian" => $_POST["phoneNumberOfGuardian"],
+                "address" => $_POST["address"]
+            ];
+        }
+        else{
+
+        }
         $data=[
             'identity'=>$_POST['identity'],
             'fullname'=>$_POST['fullname'],
@@ -143,5 +163,19 @@ class IdController extends BaseController
             ob_end_clean();
             return view("id/inputVerificationCode.php",array("verificationCode"=>$verificationCode,"username"=>$_POST['username'],"mail"=>$to));
         }        
+    }
+    public function redirectTo()
+    {
+        // echo $_GET["controller"]."/".$_GET["where"];
+        return view($_GET["controller"]."/".$_GET["where"]);  
+    }
+    public function template()
+    {
+        $data = [
+            'title' => 'Home Page',
+            'content' => view('home') // Load the content view
+        ];
+
+        echo view('template', $data); // Load the template view with data
     }
 }

@@ -11,8 +11,8 @@
 | 8/9  |NULL|study php|programming several pages|
 | 8/10 |NULL|session implementation| |
 | 8/11 |git merge, discuss migration|git merge, discuss migration|downloadable link|
-| 8/12 |        |      |      |
-| 8/13 |        |      |      |
+| 8/12 |post page, fix data format|NULL|study nav bar|
+| 8/13 |post page|time system|tamplate|
 | 8/14 |        |      |      |
 | 8/15 |        |      |      |
 | 8/16 |        |      |      |

@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use APP\Models\PostModel;
 
 class PostController extends BaseController
 {
@@ -10,15 +11,8 @@ class PostController extends BaseController
     {
         return view('posts/index');
     }
-    public function redirectTo()
-    {
-        //echo $this->request->getVar('where');
 
-        if($this->request->getVar('where') == 'student')
-            return view('posts/studentProfile'); 
-        else if($this->request->getVar('where') == 'professor')
-            return view('posts/professorProfile');
-        else
-            return view("posts/{$this->request->getVar('where')}.php");   
+    public function bulletin(){
+        return view("posts/bulletin.php");
     }
 }

@@ -1,13 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>User Registration</title>
-    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
-    <!-- <link rel="stylesheet" href="https://classless.de/classless.css"> -->
 
-
-</head>
-<body>
     <h1>User Registration</h1>
     <form action="/idController/createAccount" enctype="multipart/form-data" method="post">
         <h1>註冊帳號</h1>
@@ -60,5 +51,3 @@
             });
         </script>
     </form>
-</body>
-</html>
