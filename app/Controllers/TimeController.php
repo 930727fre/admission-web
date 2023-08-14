@@ -65,6 +65,56 @@ class TimeController extends BaseController
             $timeModel->where('month', $offset['month'])->delete();
         echo "重設成功";
     } 
+    public function limitTime($beginTime,$endTime,$type) // ex limitTime('05-07','07-11','day')
+    {
+        $time = $this->convertINT($time = $this->getTime());
+        if($type == 'hour')
+        {
+            if($time[3] < $endTime&&$time[3] >= $beginTime)
+                return 1;
+            else
+                return 0;
+        }
+        else if($type == 'day')
+        {
+            $begin = $this->convertINT($beginTime);
+            $end = $this->convertINT($endTime);
+            if($time[1] > $end[0]||$time[1] < $begin[0])
+                return 0;
+            else if($time[1] == $begin[0]&&$time[1] == $end[0])
+            {
+                if($time[2] > $end[1]||$time[2] < $begin[1])
+                    return 0;
+                else
+                    return 1;
+            }
+            else if($time[1] == $begin[0])
+            {
+                if($time[2] < $begin[1])
+                    return 0;
+                else
+                    return 1;
+            }
+            else if($time[1] == $end[0])
+            {
+                if($time[2] > $end[1])
+                    return 0;
+                else
+                    return 1;
+            }
+            else
+                return 1;
+        }
+    }
+    //this is limit example
+    public function example()
+    {
+        echo $this->getTime();
+        echo '<br>';
+        echo $this->limitTime(7,8,'hour');
+        echo $this->limitTime('11-16','11-17','day');
+
+    }
     private function convertINT($string)
     {
         if(strstr($string,'T')) //this is from setTime()
