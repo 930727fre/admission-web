@@ -13,7 +13,7 @@
 | 8/11 |git merge, discuss migration|git merge, discuss migration|downloadable link|
 | 8/12 |post page, fix data format|NULL|study nav bar|
 | 8/13 |post page|time system|tamplate|
-| 8/14 |        |      |      |
+| 8/14 |NULL|finish time system |nav bar|
 | 8/15 |        |      |      |
 | 8/16 |        |      |      |
 | 8/17 |        |      |      |

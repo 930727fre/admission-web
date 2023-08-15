@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.classless.min.css">
+<link rel="stylesheet" href="https://classless.de/classless.css">
 <body>
 
     <h1>登入</h1>

@@ -2,8 +2,8 @@
 <html>
 <head>
     <title>User Registration</title>
-    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
-    <!-- <link rel="stylesheet" href="https://classless.de/classless.css"> -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://classless.de/classless.css">
 
 
 </head>
