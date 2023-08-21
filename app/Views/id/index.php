@@ -1,10 +1,10 @@
 <?php
-    session_start();
     use CodeIgniter\Session\Session;
+    session_start();
 ?>
 <link rel="stylesheet" href="https://classless.de/classless.css">
 
-<a href="/register">
+<a href="/signUp">
     <button <?php if (isset($_SESSION['signedIn'])&&$_SESSION['signedIn']==true) { echo 'style="display:none"'; } ?>>註冊</button>
 </a>
 <a href="/signIn">

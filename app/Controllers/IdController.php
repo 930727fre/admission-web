@@ -3,7 +3,8 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
-use App\Models\SignModel;
+use App\Models\StudentModel;
+use App\Models\ProfessorModel;
 use App\Models\PostModel;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
@@ -20,44 +21,48 @@ class IdController extends BaseController
         return view("id/signIn.php");
     }
     public function validateAccount(){
-        $model=new SignModel();
+
+        if($_POST["identity"]=="student"){
+            $model=new StudentModel();
+
+        }
+        else{
+            $model=new ProfessorModel();
+        }
+
         $data=[
             'username'=>$this->request->getVar('username'),
             'password'=>$this->request->getVar('password')
         ]; 
         if($model->where('username',$data['username'])->first()){
             if(($model->where('username',$data['username'])->first())['password']==hash("sha256",$data['password'])){
-                //session_start();
-                //$_SESSION['username']=$data['username'];
-                //$_SESSION['signedIn']=true;
-                $session = session();
-                $sessiondata = [
+                session_start();
+                $_SESSION = [
                     'username'  => $data['username'],
-                    'loggedIn' => true,
+                    'signedIn' => true,
                 ];
-                $session->set($sessiondata);
-                return redirect()->to("idController/logIn");
+                return view("id/profile.php");
             }
         }
             // echo "<script>alert('" . 錯誤username或密碼 . "');</script>";
         return view("id/signIn.php",array("message"=>"密碼輸入錯誤"));
 
     }
-    public function logIn()
+    public function profile()
     {
         return view("id/profile.php");
     }
-    public function register()
+    public function signUp()
     {
-        return view("id/register.php");
+        return view("id/signUp.php");
     }
     public function createAccount(){
-        $model=new SignModel(); 
 
         if($_POST['identity']=="student"){
+            $model=new StudentModel();
             $data = [
                 "username" => $_POST["username"],
-                "password" => $_POST["password"],
+                "password" => hash("sha256",$_POST['password']),
                 "mail" => $_POST["mail"],
                 "idCard" => $_POST["idCard"],
                 "fullname" => $_POST["fullname"],
@@ -70,31 +75,32 @@ class IdController extends BaseController
             ];
         }
         else{
-
+            $model=new ProfessorModel();
+            $data=[
+                'fullname'=>$_POST['fullname'],
+                'mail'=>$_POST['mail'],
+                'username'=>$_POST['username'],
+                'password'=>hash("sha256",$_POST['password'])
+            ];
         }
-        $data=[
-            'identity'=>$_POST['identity'],
-            'fullname'=>$_POST['fullname'],
-            'mail'=>$_POST['mail'],
-            'username'=>$_POST['username'],
-            'password'=>hash("sha256",$_POST['password'])
-        ];
-        $YN=$model->save($data);
-        // print_r($YN);
+        $model->save($data);
         return view('id/countdown.php',array("message"=>"註冊成功!"));
-        // return redirect("idController");
     }
     public function sessionTest(){
         return view('id/sessionTest.php');
     }
     public function test1(){
-        return view('id/test1.php');
+        return view('id/countdown.php',array("message"=>"註冊成功!"));
     }
     public function checkUsername(){
         $username = $this->request->getPost('username');
+        if($this->request->getPost('identity')=="student"){
+            $model = new StudentModel(); // Replace this with the actual model representing your users
+        }
+        else{
+            $model = new ProfessorModel(); // Replace this with the actual model representing your users
 
-        $model = new SignModel(); // Replace this with the actual model representing your users
-
+        }
         // Check if the username exists in the database
         $user = $model->where('username', $username)->first();
 
@@ -107,11 +113,11 @@ class IdController extends BaseController
         }
     }
     public function signOut(){
-        //session_start();
-        //session_destroy();
-        //$_SESSION = array(); 
-        $session = session();
-        $session->destroy();
+        session_start();
+        session_destroy();
+        session_unset();
+
+
         return view("id/index.php");
     }
     public function forgetPassword(){

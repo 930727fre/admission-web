@@ -4,22 +4,25 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class SignModel extends Model
+class ProfessorModel extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'studentIdentity';
+    protected $table            = 'professorIdentity';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
-        'serialNumber',
-        'identity',
-        'fullname',
-        'mail',
-        'username',
-        'password'
+        "serialNumber",
+        "username",
+        "password",
+        "fullname",
+        "college",
+        "mail",
+        "phoneNumber",
+        "site",
+        "address"
     ];
 
     // Dates

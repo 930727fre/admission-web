@@ -16,50 +16,39 @@ class Template extends Migration
                     'unsigned'=>True,
                     'auto_increment'=>True
                 ],
-                'username'=>[
-                    'type'=>'VARCHAR',
-                    'constraint'=>'50'
+                'username'=>[   
+                    'type'=>'TEXT'
                 ],
-                'password'=>[
-                    'type'=>'VARCHAR',
-                    'constraint'=>'50'
+                'password'=>[   
+                    'type'=>'TEXT'
                 ],
                 'idCard'=>[ //身分證
-                    'type'=>'INT',
-                    'constraint'=>1000
+                    'type'=>'TEXT'
                 ],
                 'fullname'=>[   
-                    'type'=>'VARCHAR',
-                    'constraint'=>'50'
+                    'type'=>'TEXT'
                 ],
                 'school'=>[   
-                    'type'=>'VARCHAR',
-                    'constraint'=>'50'
+                    'type'=>'TEXT'
                 ],
-                'mail'=>[
-                    'type'=>'VARCHAR',
-                    'constraint'=>'50'
-                ],                
-                'phoneNumber'=>[
-                    'type'=>'VARCHAR',
-                    'constraint'=> 1000
+                'mail'=>[   
+                    'type'=>'TEXT'
+                ],              
+                'phoneNumber'=>[   
+                    'type'=>'TEXT'
                 ],
-                'relationship'=>[   //監護人關係
-                    'type'=>'INT',
-                    'constraint'=>'50'
+                'relationship'=>[   
+                    'type'=>'TEXT'
                 ],
-                'phoneNumberOfGuardian'=>[  //監護人手機
-                    'type'=>'VARCHAR',
-                    'constraint'=> 1000
+                'phoneNumberOfGuardian'=>[   
+                    'type'=>'TEXT'
                 ],
-                'guardian'=>[   //監護人
-                    'type'=>'VARCHAR',
-                    'constraint'=>'50'
+                'guardian'=>[   
+                    'type'=>'TEXT'
                 ],
-                'address'=>[
-                    'type'=>'VARCHAR',
-                    'constraint'=>'50'
-                ],
+                'address'=>[   
+                    'type'=>'TEXT'
+                ]
 
             ]
         );
@@ -74,20 +63,18 @@ class Template extends Migration
                     'unsigned'=>True,
                     'auto_increment'=>True
                 ],
-                'username'=>[
-                    'type'=>'VARCHAR',
-                    'constraint'=>'20'
+                'username'=>[   
+                    'type'=>'TEXT'
                 ],
-                'title'=>[
-                    'type'=>'VARCHAR',
-                    'constraint'=>'50'
-                ],                
+                'title'=>[   
+                    'type'=>'TEXT'
+                ],              
                 'content'=>[
                     'type'=>'TEXT',
                 ],
                 'contentCSS'=>[
                     'type'=>'TEXT',
-                ],
+                ]
             ]
         );
         $this->forge->addKey('id',True);
@@ -101,14 +88,12 @@ class Template extends Migration
                     'unsigned'=>True,
                     'auto_increment'=>True
                 ],
-                'url'=>[
-                    'type'=>'VARCHAR',
-                    'constraint'=>'100'
+                'url'=>[   
+                    'type'=>'TEXT'
                 ],
-                'department'=>[
-                    'type'=>'VARCHAR',
-                    'constraint'=>'50'
-                ],
+                'department'=>[   
+                    'type'=>'TEXT'
+                ]
                 
 
             ]
@@ -121,33 +106,24 @@ class Template extends Migration
                 'id'=>[
                     'type'=>'INT',
                     'constraint'=>1000,
-                    'unsigned'=>True
+                    'unsigned'=>True,
+                    'auto_increment'=>True
                 ],
-                'chinese'=>[
-                    'type'=>'INT',
-                    'constraint'=>15,
-                    'unsigned'=>True
+                'chinese'=>[   
+                    'type'=>'TEXT'
                 ],
-                'english'=>[
-                    'type'=>'INT',
-                    'constraint'=>15,
-                    'unsigned'=>True
+                'english'=>[   
+                    'type'=>'TEXT'
                 ],
-                'math'=>[
-                    'type'=>'INT',
-                    'constraint'=>15,
-                    'unsigned'=>True
+                'math'=>[   
+                    'type'=>'TEXT'
                 ],
-                'science'=>[
-                    'type'=>'INT',
-                    'constraint'=>15,
-                    'unsigned'=>True
+                'science'=>[   
+                    'type'=>'TEXT'
                 ],
-                'social'=>[
-                    'type'=>'INT',
-                    'constraint'=>15,
-                    'unsigned'=>True
-                ],
+                'social'=>[   
+                    'type'=>'TEXT'
+                ]
             ]
         );
         $this->forge->addKey('id',True);
@@ -161,38 +137,30 @@ class Template extends Migration
                     'unsigned'=>True,
                     'auto_increment'=>True
                 ],
-                'username'=>[
-                    'type'=>'VARCHAR',
-                    'constraint'=>'50'
+                'username'=>[   
+                    'type'=>'TEXT'
                 ],
-                'password'=>[
-                    'type'=>'VARCHAR',
-                    'constraint'=>'50'
+                'password'=>[   
+                    'type'=>'TEXT'
                 ],
                 'fullname'=>[   
-                    'type'=>'VARCHAR',
-                    'constraint'=>'50'
+                    'type'=>'TEXT'
                 ],
-                'college'=>[   
-                    'type'=>'VARCHAR',
-                    'constraint'=>'50'
+                'school'=>[   
+                    'type'=>'TEXT'
                 ],
-                'mail'=>[
-                    'type'=>'VARCHAR',
-                    'constraint'=>'50'
-                ],                
-                'phoneNumber'=>[
-                    'type'=>'VARCHAR',
-                    'constraint'=> 1000
+                'mail'=>[   
+                    'type'=>'TEXT'
+                ],               
+                'phoneNumber'=>[   
+                    'type'=>'TEXT'
                 ],
-                'site'=>[   //網站
-                    'type'=>'VARCHAR',
-                    'constraint'=>'50'
+                'site'=>[   
+                    'type'=>'TEXT'
                 ],
-                'address'=>[
-                    'type'=>'VARCHAR',
-                    'constraint'=>'50'
-                ],
+                'address'=>[   
+                    'type'=>'TEXT'
+                ]
 
             ]
         );
@@ -207,13 +175,11 @@ class Template extends Migration
                     'unsigned'=>True,
                     'auto_increment'=>True
                 ],
-                'username'=>[
-                    'type'=>'VARCHAR',
-                    'constraint'=>'100'
+                'username'=>[   
+                    'type'=>'TEXT'
                 ],
-                'password'=>[
-                    'type'=>'VARCHAR',
-                    'constraint'=>'50'
+                'password'=>[   
+                    'type'=>'TEXT'
                 ],
             ]
         );
@@ -223,7 +189,7 @@ class Template extends Migration
         $this->db->query("INSERT INTO adminIdentity (username, password) VALUES ('f', 'f');");
         $this->db->query("INSERT INTO adminIdentity (username, password) VALUES ('s', 's');");
         $this->db->query("INSERT INTO post (username, title, content, contentCSS)VALUES ('f', 'title1', 'hello world你好', '');");
-        $this->db->query("INSERT INTO studentIdentity (username, password, mail, idCard, fullname, school, phoneNumber, relationship, guardian, phoneNumberOfGuardian, address)VALUES ('f', 'f', '930727fre@gmail.com', '123', '莊翔鈞', '中正資工', '0961566469', '母子', '妳媽', '98', '總統府');");
+        $this->db->query("INSERT INTO studentIdentity (username, password, mail, idCard, fullname, school, phoneNumber, relationship, guardian, phoneNumberOfGuardian, address)VALUES ('f', '252f10c83610ebca1a059c0bae8255eba2f95be4d1d7bcfa89d7248a82d9f111', '930727fre@gmail.com', '123', '莊翔鈞', '中正資工', '0961566469', '母子', '妳媽', '98', '總統府');");
 
         //$this->db->query();
 

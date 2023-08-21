@@ -14,6 +14,12 @@
 <body>
     <h1>忘記密碼</h1>
     <form action="/idController/sendMail" enctype="multipart/form-data" method="post">
+        <label for="identity">身份: </label>
+        <select name="identity" id="identity">
+            <option value="student">學生</option>
+            <option value="professor">教授</option>
+        </select>
+        <br>
         <label for="username" id="usernameLabel">
             Username: <span id="username_warning" style="color: red;"></span>
         </label>
@@ -26,12 +32,12 @@
             $(document).ready(function () {
                 $('#username').on('input', function () {
                     const username = $(this).val();
-
+                    const identity = $('#identity').val(); // Get the value of the identity select
                     // Make an AJAX request to check username availability
                     $.ajax({
                         type: 'POST',
                         url: '/idController/checkUsername', // Replace with the URL to your server-side script
-                        data: { username: username },
+                        data: { username: username, identity: identity},
                         success: function (data) {
                             if (data === 'taken') {
                                 $('#username_warning').text('');
