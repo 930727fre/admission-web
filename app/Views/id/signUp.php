@@ -17,7 +17,6 @@
             <option value="professor">教授</option>
         </select>
         <br>
-
         <label for="fullname">姓名: </label>
         <input type="text" name="fullname" id="fullname" required><br>  
 
@@ -33,17 +32,24 @@
         <label for="phoneNumber">電話號碼：</label>
         <input type="tel" name="phoneNumber" id="phoneNumber" required><br>
 
-        <label for="guardian">監護人：</label>
-        <input type="text" name="guardian" id="guardian" required><br>        
-
-        <label for="relationship">與監護人的關係：</label>
-        <input type="text" name="relationship" id="relationship" required><br>    
-
-        <label for="phoneNumberOfGuardian">監護人電話：</label>
-        <input type="text" name="phoneNumberOfGuardian" id="phoneNumberOfGuardian" required><br>           
-        
         <label for="address">地址：</label>
-        <input type="text" name="address" id="address" required><br>        
+        <input type="text" name="address" id="address" required><br>  
+
+        <div class="studentField">
+            <label for="guardian">監護人：</label>
+            <input type="text" name="guardian" id="guardian" class="studentRequired" required><br>        
+
+            <label for="relationship">與監護人的關係：</label>
+            <input type="text" name="relationship" id="relationship" class="studentRequired" required><br>    
+
+            <label for="phoneNumberOfGuardian">監護人電話：</label>
+            <input type="text" name="phoneNumberOfGuardian" id="phoneNumberOfGuardian" class="studentRequired" required><br>           
+        </div>
+
+        <div class="professorField">
+            <label for="site">私人網址： </label>
+            <input type="site" name="site" id="site" class="professorRequired" required><br>
+        </div>   
 
         <label for="username" id="usernameLabel">
             Username: <span id="username_warning" style="color: red;"></span>
@@ -52,6 +58,7 @@
 
         <label for="password">密碼: </label>
         <input type="password" name="password" id="password" required><br>
+     
 
         <input type="submit" value="註冊" id="register_button">
 
@@ -60,12 +67,13 @@
             $(document).ready(function () {
                 $('#username').on('input', function () {
                     const username = $(this).val();
+                    const identity = $('#identity').val(); // Get the value of the identity select
 
                     // Make an AJAX request to check username availability
                     $.ajax({
                         type: 'POST',
                         url: '/idController/checkUsername', // Replace with the URL to your server-side script
-                        data: { username: username },
+                        data: { username: username, identity: identity }, // Pass both username and identity
                         success: function (data) {
                             if (data === 'taken') {
                                 $('#username_warning').text('Username used. Please choose another one.');
@@ -79,7 +87,29 @@
                         }
                     });
                 });
+                $('.professorField').hide();
+                $('.professorRequired').removeAttr('required');
+
+                $('#identity').on('change', function () {
+                    const selectedIdentity = $(this).val();
+
+                    // Show the appropriate field section based on selected identity
+                    if (selectedIdentity === 'student') {
+                        $('.studentField').show();
+                        $('.studentRequired').attr('required', true);
+                        $('.professorField').hide();
+                        $('.professorRequired').removeAttr('required');
+
+                    } else if (selectedIdentity === 'professor') {
+                        $('.professorField').show();
+                        $('.professorRequired').attr('required', true);
+                        $('.studentField').hide();
+                        $('.studentRequired').removeAttr('required');
+
+                    }
+                });
             });
+            
         </script>
     </form>
 </body>

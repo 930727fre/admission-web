@@ -45,7 +45,7 @@ class IdController extends BaseController
             }
         }
             // echo "<script>alert('" . 錯誤username或密碼 . "');</script>";
-        return view("id/signIn.php",array("message"=>"密碼輸入錯誤"));
+        return view("id/signIn.php",array("message"=>"帳號/密碼輸入錯誤"));
 
     }
     public function profile()
@@ -57,31 +57,26 @@ class IdController extends BaseController
         return view("id/signUp.php");
     }
     public function createAccount(){
-
+        $data = [
+            "username" => $_POST["username"],
+            "password" => hash("sha256",$_POST['password']),
+            "mail" => $_POST["mail"],
+            "idCard" => $_POST["idCard"],
+            "fullname" => $_POST["fullname"],
+            "school" => $_POST["school"],
+            "address" => $_POST["address"],
+            "phoneNumber" => $_POST["phoneNumber"]
+        ];
+        
         if($_POST['identity']=="student"){
             $model=new StudentModel();
-            $data = [
-                "username" => $_POST["username"],
-                "password" => hash("sha256",$_POST['password']),
-                "mail" => $_POST["mail"],
-                "idCard" => $_POST["idCard"],
-                "fullname" => $_POST["fullname"],
-                "school" => $_POST["school"],
-                "phoneNumber" => $_POST["phoneNumber"],
-                "relationship" => $_POST["relationship"],
-                "guardian" => $_POST["guardian"],
-                "phoneNumberOfGuardian" => $_POST["phoneNumberOfGuardian"],
-                "address" => $_POST["address"]
-            ];
+            $data["relationship"]=$_POST["relationship"];
+            $data["guardian"] =$_POST["guardian"];
+            $data["phoneNumberOfGuardian"] =$_POST["phoneNumberOfGuardian"];
         }
         else{
             $model=new ProfessorModel();
-            $data=[
-                'fullname'=>$_POST['fullname'],
-                'mail'=>$_POST['mail'],
-                'username'=>$_POST['username'],
-                'password'=>hash("sha256",$_POST['password'])
-            ];
+            $data["site"]=$_POST["site"];
         }
         $model->save($data);
         return view('id/countdown.php',array("message"=>"註冊成功!"));
@@ -125,7 +120,12 @@ class IdController extends BaseController
     }
     public function changePassword(){
         if($_POST['verificationCode']==$_POST["input"]){
-            $model = new SignModel(); // Replace this with the actual model representing your users
+            if($this->request->getVar('identity')=="student"){
+                $model = new StudentModel();
+            }
+            else{
+                $model = new ProfessorModel();
+            }            
             $model->where("username",$_POST['username'])->set(array("password"=>hash("sha256",$_POST['password'])))->update();
 
             return view("id/countdown.php",array("message"=>"驗證成功！已修改密碼"));
@@ -147,7 +147,12 @@ class IdController extends BaseController
         $mail = new PHPMailer();
         $mail->IsSMTP(); // enable SMTP
         $from="930727fre@gmail.com";
-        $model = new SignModel();
+        if($this->request->getVar('identity')=="student"){
+            $model = new StudentModel();
+        }
+        else{
+            $model = new ProfessorModel();
+        }
         $to=($model->where('username', $_POST['username'])->first())['mail'];
         $fromPassword=getenv("API_KEY");
         $mail->SMTPDebug = 1; // debugging: 1 = errors and messages, 2 = messages only
@@ -167,7 +172,7 @@ class IdController extends BaseController
     
         } else {
             ob_end_clean();
-            return view("id/inputVerificationCode.php",array("verificationCode"=>$verificationCode,"username"=>$_POST['username'],"mail"=>$to));
+            return view("id/inputVerificationCode.php",array("verificationCode"=>$verificationCode,"username"=>$_POST['username'],"mail"=>$to, "identity"=>$this->request->getVar('identity')));
         }        
     }
     public function redirectTo()

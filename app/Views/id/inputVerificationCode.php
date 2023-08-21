@@ -7,10 +7,12 @@
 
     <label for="verificationCode">驗證碼: <?php echo "(已寄送至".$mail."）";?></label>
     <input type="text" name="input" id="input" required><br>
-    <label for="password">修改密碼: </label>
+    <label for="password">欲修改密碼: </label>
     <input type="text" name="password" id="password" required><br>
     <input type="hidden" name="verificationCode" value=<?php echo $verificationCode; ?>>
     <input type="hidden" name="username" value=<?php echo $_POST["username"]?>>
+    <input type="hidden" name="identity" value=<?php echo $_POST["identity"]?>>
+
     <input type="submit">
 
 </form>
