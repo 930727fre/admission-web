@@ -14,7 +14,7 @@ class StudentModel extends Model
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
-        'serialNumber',
+        'id',
         'fullname',
         'mail',
         'username',

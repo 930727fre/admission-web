@@ -14,7 +14,7 @@ class ProfessorModel extends Model
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
-        "serialNumber",
+        "id",
         "username",
         "password",
         "fullname",

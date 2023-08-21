@@ -14,13 +14,13 @@
 | 8/12 |post page, fix data format|NULL|study nav bar|
 | 8/13 |post page|time system|tamplate|
 | 8/14 |NULL|finish time system |nav bar|
-| 8/15 |        |      |      |
-| 8/16 |        |      |      |
-| 8/17 |        |      |      |
-| 8/18 |        |      |      |
-| 8/19 |        |      |      |
-| 8/20 |        |      |      |
-| 8/21 |        |      |      |
+| 8/15 |NULL|working on editor|      |
+| 8/16 |NULL|working on editor|      |
+| 8/17 |NULL|finish editor|      |
+| 8/18 |NULL|data upload system|      |
+| 8/19 |NULL|data upload system|      |
+| 8/20 |NULL|data upload system|      |
+| 8/21 |session bug fixed, signIn bug fixed, complete registration for diverse identity|      |template.html|
 | 8/22 |        |      |      |
 | 8/23 |        |      |      |
 | 8/24 |        |      |      |

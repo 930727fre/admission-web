@@ -10,7 +10,7 @@ class Template extends Migration
     {
         $this->forge->addField(
             [   
-                'serialNumber'=>[
+                'id'=>[
                     'type'=>'INT',
                     'constraint'=>1000,
                     'unsigned'=>True,
@@ -57,7 +57,7 @@ class Template extends Migration
 
         $this->forge->addField(
             [   
-                'serialNumber'=>[
+                'id'=>[
                     'type'=>'INT',
                     'constraint'=>1000,
                     'unsigned'=>True,
@@ -82,7 +82,7 @@ class Template extends Migration
 
         $this->forge->addField(
             [   
-                'serialNumber'=>[
+                'id'=>[
                     'type'=>'INT',
                     'constraint'=>1000,
                     'unsigned'=>True,
@@ -131,7 +131,7 @@ class Template extends Migration
 
         $this->forge->addField(
             [   
-                'serialNumber'=>[   
+                'id'=>[   
                     'type'=>'INT',
                     'constraint'=>1000,
                     'unsigned'=>True,
@@ -172,7 +172,7 @@ class Template extends Migration
 
         $this->forge->addField(
             [   
-                'serialNumber'=>[
+                'id'=>[
                     'type'=>'INT',
                     'constraint'=>1000,
                     'unsigned'=>True,
