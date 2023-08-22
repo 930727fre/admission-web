@@ -36,12 +36,13 @@ class IdController extends BaseController
         ]; 
         if($model->where('username',$data['username'])->first()){
             if(($model->where('username',$data['username'])->first())['password']==hash("sha256",$data['password'])){
-                session_start();
-                $_SESSION = [
+                $session=session();
+                $session->set([
                     'username'  => $data['username'],
                     'signedIn' => true,
-                ];
-                return view("id/profile.php");
+                ]);
+                print_r($session);
+                // return view("id/profile.php");
             }
         }
             // echo "<script>alert('" . 錯誤username或密碼 . "');</script>";
@@ -108,12 +109,12 @@ class IdController extends BaseController
         }
     }
     public function signOut(){
-        session_start();
-        session_destroy();
-        session_unset();
+        $session=session();
+        $session->destroy();
+        // print_r($session);
 
 
-        return view("id/index.php");
+        return view("id/index");
     }
     public function forgetPassword(){
         return view("id/forgetPassword.php");
