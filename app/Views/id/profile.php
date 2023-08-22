@@ -1,4 +1,3 @@
-<?php ?>
 <head>
     <link rel="stylesheet" href="https://classless.de/classless.css">
 </head>

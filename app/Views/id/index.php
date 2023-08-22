@@ -1,7 +1,6 @@
 <?php
     use CodeIgniter\Session\Session;
     $session=session();
-    
 ?>
 
 <link rel="stylesheet" href="https://classless.de/classless.css">
@@ -16,7 +15,6 @@
     <button <?php if ($session->get("signedIn")==null) { echo 'style="display:none"'; } ?>>登出</button>
 </a>
 <?php
-    // print_r($session);
     if($session->get("signedIn")!=null&&$session->get("signedIn")==true){
         echo "hello ".$session->get("username");
     }

@@ -32,7 +32,8 @@ class IdController extends BaseController
 
         $data=[
             'username'=>$this->request->getVar('username'),
-            'password'=>$this->request->getVar('password')
+            'password'=>$this->request->getVar('password'),
+            'identity'=>$this->request->getVar("identity")
         ]; 
         if($model->where('username',$data['username'])->first()){
             if(($model->where('username',$data['username'])->first())['password']==hash("sha256",$data['password'])){
@@ -40,12 +41,11 @@ class IdController extends BaseController
                 $session->set([
                     'username'  => $data['username'],
                     'signedIn' => true,
+                    'identity'=>$data['identity']
                 ]);
-                print_r($session);
-                // return view("id/profile.php");
+                return view("id/profile.php");
             }
         }
-            // echo "<script>alert('" . 錯誤username或密碼 . "');</script>";
         return view("id/signIn.php",array("message"=>"帳號/密碼輸入錯誤"));
 
     }
@@ -109,9 +109,15 @@ class IdController extends BaseController
         }
     }
     public function signOut(){
+
         $session=session();
+        $session->remove("username");
+        $session->remove("signedIn");
+
         $session->destroy();
-        // print_r($session);
+
+        // echo $session->get("username");
+        // echo $session->get("signedIn");
 
 
         return view("id/index");
