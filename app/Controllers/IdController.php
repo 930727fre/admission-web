@@ -120,7 +120,7 @@ class IdController extends BaseController
         // echo $session->get("signedIn");
 
 
-        return view("id/index");
+        return view("/home");
     }
     public function forgetPassword(){
         return view("id/forgetPassword.php");

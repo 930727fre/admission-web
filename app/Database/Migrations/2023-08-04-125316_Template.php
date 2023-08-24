@@ -287,7 +287,8 @@ class Template extends Migration
         $this->db->query("INSERT INTO adminIdentity (username, password) VALUES ('f', 'f');");
         $this->db->query("INSERT INTO adminIdentity (username, password) VALUES ('s', 's');");
         $this->db->query("INSERT INTO post (username, title, content, contentCSS)VALUES ('f', 'title1', 'hello world你好', '');");
-        $this->db->query("INSERT INTO studentIdentity (username, password, mail, idCard, fullname, school, phoneNumber, relationship, guardian, phoneNumberOfGuardian, address)VALUES ('f', 'f', '930727fre@gmail.com', '123', '莊翔鈞', '中正資工', '0961566469', '母子', '妳媽', '98', '總統府');");
+        $this->db->query("INSERT INTO studentIdentity (username, password, mail, idCard, fullname, school, phoneNumber, relationship, guardian, phoneNumberOfGuardian, address)VALUES ('f', '252f10c83610ebca1a059c0bae8255eba2f95be4d1d7bcfa89d7248a82d9f111', '930727fre@gmail.com', '123', '莊翔鈞', '中正資工', '0961566469', '母子', '妳媽', '98', '總統府');");
+        $this->db->query("INSERT INTO professorIdentity (username, password, fullname, idCard, school, mail, phoneNumber,site, address) VALUES ('pf', '252f10c83610ebca1a059c0bae8255eba2f95be4d1d7bcfa89d7248a82d9f111' ,'f教授', 'A3', '中正大學', '930727fre@gmail.com', '09', 'https://google.com', '台北市');");
 
         //$this->db->query();
 
