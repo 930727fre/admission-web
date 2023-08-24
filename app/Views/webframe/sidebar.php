@@ -2,7 +2,7 @@
 <ul class="side">
         <li class="sidetop">功能列表</li>
         <hr style="color:white;width: 140px;">
-        <li><a href="/PageController/index"><button type="button" class="btn btn-primary" style="font-size: 20px;">回首頁</button></a></li>
+        <li><a href="/"><button type="button" class="btn btn-primary" style="font-size: 20px;">回首頁</button></a></li>
         <li><a href="#">訊息公告</a></li>
         <li><a href="/PageController/law">法令規章</a></li>
         <li><a href="#">重要時程</a></li>
