@@ -101,7 +101,7 @@
         {
             inp[i].value = s[i].value;
         }
-        alert(inp[3].value);
+        //alert(inp[3].value);
         //same department check
     }
 </script>

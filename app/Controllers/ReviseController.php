@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\GradeModel;
-use App\Models\SignModel;
+use App\Models\StudentModel;
 use App\Models\VolunteerModel;
 use CodeIgniter\Session\Session;
 
@@ -24,42 +24,32 @@ class ReviseController extends BaseController
     public function gradeStore()
     {
         //view grade
+        $session = session();
+        $studentModel = new StudentModel();
+        $num = $studentModel->where('username',$session->get('username'))->first()['id'];
         $gradeModel = new GradeModel();
-        $ID = $this -> findID();
-        if(!$ID)
-        {
-            echo '<h2 style = "text -align : center">你尚未登入!!<h2>';
-            echo '<a href="/IdController/"><button>回登入頁面</button></a>';
-            return view("revises/blank");
-        }
+        $result = $gradeModel->where('num', $num)->first();
         $data = [
-            'Id' => $ID,   
-            'Chinese' => $this->request->getVar('Chinese'),
-            'English' => $this->request->getVar('English'),
-            'Math' => $this->request->getVar('Math'),
-            'Science' => $this->request->getVar('Science'),
-            'Social' => $this->request->getVar('Social')
+            'num' => $num,   
+            'chinese' => $this->request->getVar('Chinese'),
+            'english' => $this->request->getVar('English'),
+            'math' => $this->request->getVar('Math'),
+            'science' => $this->request->getVar('Science'),
+            'social' => $this->request->getVar('Social')
 
         ];
-        $gradeModel->where('Id',$ID);
-        $result = $gradeModel->findAll();
-        //print_r($data);
         if(empty($result))
         {
             $gradeModel->save($data);
-            echo "還沒存在了";   
         }
         else
         {
-            $gradeModel->where('Id',$ID);
-            $gradeModel->delete();
-            $gradeModel->save($data);
-            echo "已經存在了";
+            $id = $result['id'];
+            //print_r($id);
+            $gradeModel->update($id,$data);
         }
-        //print_r($data);
         echo '<h2 style = "text -align : center">修改成功!!<h2>';
         echo '<a href="/ReviseController/"><button>回個人首頁</button></a>';
-        return view("revises/blank");
     }
     public function deleteGrade()
     {
@@ -67,68 +57,20 @@ class ReviseController extends BaseController
         $gradeModel->where('Id','1');
         $gradeModel->delete();
     }
-    public function redirectTo()
-    {   
-        if($this->request->getVar('where') == 'grade')
-        {
-            $identity = $this -> isStudent();
-            if($identity == 1) //professor
-            {
-                echo '<h2 style = "text -align : center">你不需要輸入成績!!<h2>';
-                echo '<a href="/ReviseController/redirectTo?where=index"><button>回上一頁</button></a>';
-                return view("revises/blank");
-            }
-            else if($identity == 2) //student
-            {
-                return view('revises/grade');
-            }
-            else
-            {
-                echo '<h2 style = "text -align : center">你尚未登入!!<h2>';
-                echo '<a href="/IdController/"><button>回登入頁面</button></a>';
-                return view("revises/blank");
-            }
-        }
-        else if($this->request->getVar('where') == 'profile')
-        {
-            $identity = $this -> isStudent();
-            if($identity == 1)
-                return view('revises/professorProfile');
-            else if($identity == 2)
-                return view('revises/studentProfile');
-            else
-            {
-                echo '<h2 style = "text -align : center">你尚未登入!!<h2>';
-                echo '<a href="/IdController/"><button>回登入頁面</button></a>';
-                return view("revises/blank");
-            }
-        }
-        else
-        {
-            return view("revises/{$this->request->getVar('where')}.php");
-        }    
+    public function grade()
+    {
+        return view('revises/grade');
     }
     public function volunteer()
     {
-        $session = session();
-        $volunteerModel = new VolunteerModel();
-        $signModel =new SignModel();
-        $num = $signModel->where('username',$session->get('username'))->first()['id'];
-        $result = $volunteerModel->where('num', $num)->first();
-        if(empty($result))
-            return view("revises/volunteer");
-        else
-        {
-            return view("revises/volunteer");
-        }
-
+        return view("revises/volunteer");
     }
     public function volunteerStore()
     {
         $session = session();
         $volunteerModel = new VolunteerModel();
-        $signModel =new SignModel();
-        $num = $signModel->where('username',$session->get('username'))->first()['id'];
+        $studentModel =new StudentModel();
+        $num = $studentModel->where('username',$session->get('username'))->first()['id'];
         $data = [
             'num' => $num,
             'school1' =>  $this->request->getVar("School1"),
@@ -164,7 +106,7 @@ class ReviseController extends BaseController
         $identity = $session -> get('identity');
         if($identity == 'student')
         {
-            $model = new SignModel();
+            $model = new StudentModel();
             $num = $model->where('username',$session->get('username'))->first()['id'];
             $data = $model->find($num);
             //print_r($data);
@@ -183,7 +125,7 @@ class ReviseController extends BaseController
         $identity = $session -> get('identity');
         if($identity == 'student')
         {
-            $model = new SignModel();
+            $model = new StudentModel();
             $id = $model->where('username',$session->get('username'))->first()['id'];
             $data = [
                 'fullname' => $this->request->getVar('fullname'),   

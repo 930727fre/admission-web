@@ -109,6 +109,11 @@ class Template extends Migration
                     'unsigned'=>True,
                     'auto_increment'=>True
                 ],
+                'num'=>[
+                    'type'=>'INT',
+                    'constraint'=>1000,
+                    'unsigned'=>True
+                ],
                 'chinese'=>[   
                     'type'=>'TEXT'
                 ],

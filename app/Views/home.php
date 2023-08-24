@@ -36,7 +36,7 @@
         <li><a href="#">法令規章</a></li>
         <li><a href="#">重要時程</a></li>
         <li><a href="#">下載專區</a></li>
-        <li><a href="#">相關網站</a></li>
+        <li><a href="#">相關網站1</a></li>
       </ul>
       <div class="mainArticle">
         <h1>公告</h1>

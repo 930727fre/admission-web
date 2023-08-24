@@ -10,6 +10,6 @@
     <a href='/'>首頁</a><br>
     <a href='/idController'>url1</a><br>
     <a href='/idController'>url2</a><br>
-    <a href='/ReviseController/redirectTo?where=grade'>修改成績</a><br>
+    <a href='/ReviseController/'>修改個人資料</a><br>
     <a href='/signOut'>登出</a><br>
 </body>
