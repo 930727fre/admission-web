@@ -47,6 +47,8 @@ $routes->get('PostController', 'PostController::index');
 $routes->get('ReviseController', 'ReviseController::index');
 $routes->get("redirectTo","idController::redirectTo");
 
+$routes->get('UploadController', 'UploadController::index');
+$routes->get("uploadForm","UploadController::uploadForm");
 /*
  * --------------------------------------------------------------------
  * Additional Routing

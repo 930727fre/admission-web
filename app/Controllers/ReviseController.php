@@ -5,12 +5,20 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use App\Models\GradeModel;
 use App\Models\SignModel;
+use App\Models\VolunteerModel;
 use CodeIgniter\Session\Session;
 
 class ReviseController extends BaseController
 {
     public function index()
     {
+        $session = session();
+        $sessionData = [
+            'username'  => 'f',
+            'identity' => 'student',
+            'loggedIn' => true
+        ];
+        $session->set($sessionData);
         return view('revises/index');
     }
     public function gradeStore()
@@ -99,6 +107,105 @@ class ReviseController extends BaseController
         {
             return view("revises/{$this->request->getVar('where')}.php");
         }    
+    }
+    public function volunteer()
+    {
+        $session = session();
+        $volunteerModel = new VolunteerModel();
+        $signModel =new SignModel();
+        $num = $signModel->where('username',$session->get('username'))->first()['id'];
+        $result = $volunteerModel->where('num', $num)->first();
+        if(empty($result))
+            return view("revises/volunteer");
+        else
+        {
+            return view("revises/volunteer");
+        }
+
+    }
+    public function volunteerStore()
+    {
+        $session = session();
+        $volunteerModel = new VolunteerModel();
+        $signModel =new SignModel();
+        $num = $signModel->where('username',$session->get('username'))->first()['id'];
+        $data = [
+            'num' => $num,
+            'school1' =>  $this->request->getVar("School1"),
+            'department1' => $this->request->getVar("Department1"),
+            'school2' => $this->request->getVar("School2"),
+            'department2' => $this->request->getVar("Department2"),
+            'school3' => $this->request->getVar("School3"),
+            'department3' => $this->request->getVar("Department3"),
+            'school4' => $this->request->getVar("School4"),
+            'department4' => $this->request->getVar("Department4"),
+            'school5' => $this->request->getVar("School5"),
+            'department5' => $this->request->getVar("Department5"),
+            'school6' => $this->request->getVar("School6"),
+            'department6' => $this->request->getVar("Department6"),
+        ];
+        print_r($data);
+        $result = $volunteerModel->where('num', $num)->first();
+        if(empty($result))
+            $volunteerModel->save($data);
+        else
+        {
+            $key = $volunteerModel->where('num', $num)->first()['id'];
+            echo $key;
+            $volunteerModel->update($key, $data);
+        }
+        print_r($result);
+        echo '<h2 style = "text -align : center">修改成功!!<h2>';
+        echo '<a href="/reviseController/"><button>回個人頁面</button></a>';
+    }
+    public function profile()
+    {
+        $session = session();
+        $identity = $session -> get('identity');
+        if($identity == 'student')
+        {
+            $model = new SignModel();
+            $num = $model->where('username',$session->get('username'))->first()['id'];
+            $data = $model->find($num);
+            //print_r($data);
+            return view("revises/studentProfile", $data);
+        }
+        else if($identity == 'professor')
+        {
+            //not complete
+            return view("revises/professorProfile");
+        }
+
+    }
+    public function profileStore()
+    {
+        $session = session();
+        $identity = $session -> get('identity');
+        if($identity == 'student')
+        {
+            $model = new SignModel();
+            $id = $model->where('username',$session->get('username'))->first()['id'];
+            $data = [
+                'fullname' => $this->request->getVar('fullname'),   
+                'idCard' => $this->request->getVar('idCard'),
+                'school' => $this->request->getVar('school'),
+                'mail' => $this->request->getVar('mail'),
+                'phoneNumber' => $this->request->getVar('phoneNumber'),
+                'relationship' => $this->request->getVar('relationship'),
+                'phoneNumberOfGuardian' => $this->request->getVar('phoneNumberOfGuardian'),
+                'address' => $this->request->getVar('address')
+            ];
+            //echo $id;
+            $model->update($id,$data);
+            print_r($data);
+            echo '<h2 style = "text -align : center">修改成功!!<h2>';
+            echo '<a href="/reviseController/"><button>回個人頁面</button></a>';
+        }
+        else if($identity == 'professor')
+        {
+            //not complete
+            echo 'No';
+        }
     }
     private function isStudent()
     {

@@ -4,20 +4,19 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class PostModel extends Model
+class DepartmentModel extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'post';
+    protected $table            = 'schoolQuery';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
-        'username',
-        'title',
-        'content',
-        'contentCSS'
+        'url',
+        'department',
+        'school'
     ];
 
     // Dates

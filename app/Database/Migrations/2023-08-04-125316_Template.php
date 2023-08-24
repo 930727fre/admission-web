@@ -104,6 +104,7 @@ class Template extends Migration
         $this->forge->addField(
             [   
                 'id'=>[
+                'id'=>[
                     'type'=>'INT',
                     'constraint'=>1000,
                     'unsigned'=>True,
@@ -181,8 +182,10 @@ class Template extends Migration
                 'username'=>[   
                     'type'=>'TEXT'
                 ],
-                'password'=>[   
-                    'type'=>'TEXT'
+                'Social'=>[
+                    'type'=>'INT',
+                    'constraint'=>15,
+                    'unsigned'=>True
                 ],
             ]
         );
@@ -197,6 +200,174 @@ class Template extends Migration
 
         //$this->db->query();
 
+
+        $this->forge->addField(
+            [   
+                'serialNumber'=>[   
+                    'type'=>'INT',
+                    'constraint'=>1000,
+                    'unsigned'=>True,
+                    'auto_increment'=>True
+                ],
+                'username'=>[
+                    'type'=>'VARCHAR',
+                    'constraint'=>'50'
+                ],
+                'password'=>[
+                    'type'=>'VARCHAR',
+                    'constraint'=>'50'
+                ],
+                'fullname'=>[   
+                    'type'=>'VARCHAR',
+                    'constraint'=>'50'
+                ],
+                'college'=>[   
+                    'type'=>'VARCHAR',
+                    'constraint'=>'50'
+                ],
+                'mail'=>[
+                    'type'=>'VARCHAR',
+                    'constraint'=>'50'
+                ],                
+                'phoneNumber'=>[
+                    'type'=>'VARCHAR',
+                    'constraint'=> 1000
+                ],
+                'site'=>[   //網站
+                    'type'=>'VARCHAR',
+                    'constraint'=>'50'
+                ],
+                'address'=>[
+                    'type'=>'VARCHAR',
+                    'constraint'=>'50'
+                ],
+
+            ]
+        );
+        $this->forge->addKey('id',True);
+        $this->forge->createTable('professorIdentity');
+
+        $this->forge->addField(
+            [   
+                'serialNumber'=>[
+                    'type'=>'INT',
+                    'constraint'=>1000,
+                    'unsigned'=>True,
+                    'auto_increment'=>True
+                ],
+                'username'=>[
+                    'type'=>'VARCHAR',
+                    'constraint'=>'100'
+                ],
+                'password'=>[
+                    'type'=>'VARCHAR',
+                    'constraint'=>'50'
+                ],
+            ]
+        );
+        $this->forge->addKey('id',True);
+        $this->forge->createTable('adminIdentity');
+
+        $this->forge->addField(
+            [   
+                'month'=>[
+                    'type'=>'INT',
+                    'constraint'=>10000,
+                ],
+                'day'=>[
+                    'type'=>'INT',
+                    'constraint'=> 100000
+                ],
+                'hour'=>[
+                    'type'=>'INT',
+                    'constraint'=>10000,
+                ],
+                'minute'=>[
+                    'type'=>'INT',
+                    'constraint'=> 10000
+                ],
+                'second'=>[
+                    'type'=>'INT',
+                    'constraint'=>10000,
+                ]
+            ]
+        );
+        $this->forge->addKey('id',True);
+        $this->forge->createTable('time');
+
+        $this->forge->addField(
+            [   
+                'id'=>[
+                    'type'=>'INT',
+                    'constraint'=>1000,
+                    'unsigned'=>True,
+                    'auto_increment'=>True
+                ],
+                'num'=>[
+                    'type'=>'INT',
+                    'constraint'=>1000,
+                    'unsigned'=>True
+                ],
+                'school1'=>[
+                    'type'=>'VARCHAR',
+                    'constraint'=>'100'
+                ],
+                'department1'=>[
+                    'type'=>'VARCHAR',
+                    'constraint'=>'100'
+                ],
+                'school2'=>[
+                    'type'=>'VARCHAR',
+                    'constraint'=>'100'
+                ],
+                'department2'=>[
+                    'type'=>'VARCHAR',
+                    'constraint'=>'100'
+                ],
+                'school3'=>[
+                    'type'=>'VARCHAR',
+                    'constraint'=>'100'
+                ],
+                'department3'=>[
+                    'type'=>'VARCHAR',
+                    'constraint'=>'100'
+                ],
+                'school4'=>[
+                    'type'=>'VARCHAR',
+                    'constraint'=>'100'
+                ],
+                'department4'=>[
+                    'type'=>'VARCHAR',
+                    'constraint'=>'100'
+                ],
+                'school5'=>[
+                    'type'=>'VARCHAR',
+                    'constraint'=>'100'
+                ],
+                'department5'=>[
+                    'type'=>'VARCHAR',
+                    'constraint'=>'100'
+                ],
+                'school6'=>[
+                    'type'=>'VARCHAR',
+                    'constraint'=>'100'
+                ],
+                'department6'=>[
+                    'type'=>'VARCHAR',
+                    'constraint'=>'100'
+                ],
+            ]
+        );
+        $this->forge->addKey('id',True);
+        $this->forge->createTable('volunteer');
+
+        $this->db->query("INSERT INTO adminIdentity (username, password) VALUES ('f', 'f');");
+        $this->db->query("INSERT INTO adminIdentity (username, password) VALUES ('s', 's');");
+        $this->db->query("INSERT INTO post (username, title, content, contentCSS)VALUES ('f', 'title1', 'hello world你好', '');");
+        $this->db->query("INSERT INTO studentIdentity (username, password, mail, idCard, fullname, school, phoneNumber, relationship, guardian, phoneNumberOfGuardian, address)VALUES ('f', 'f', '930727fre@gmail.com', '123', '莊翔鈞', '中正資工', '0961566469', '母子', '妳媽', '98', '總統府');");
+
+        //$this->db->query();
+
         
     }
 
@@ -208,6 +379,8 @@ class Template extends Migration
         $this->forge->dropTable('grade');
         $this->forge->dropTable('professorIdentity');
         $this->forge->dropTable('adminIdentity');
+        $this->forge->dropTable('time');
+        $this->forge->dropTable('volunteer');
     }
 
 }
