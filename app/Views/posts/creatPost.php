@@ -1,15 +1,36 @@
 <div style = "text -align : center">
+
     <h1>上傳文章</h1>
-    <form action="/ReviseController/gradeStore" enctype="mutipart/form-data" method="POST">
-        <span>標題：</span> <input id = "title" disabled value="請輸入內容"> 
+    <form action="/PostController/store" enctype="mutipart/form-data" method="POST">
+        <span>標題：</span> <input id = "title" name="title" value="請輸入內容"  disabled> 
         <input type = "button" onclick = "revise_title()" id = "title_button" value = "修改">
         <span class='confirm_button'></span>
         <br>
-        <span>內文：</span> <textarea id = "content" rol="100" col="200" disabled> </textarea>
+        <span>內文：</span> 
+        <div class = "button-wrap">
+            <span class="button header" title="header" onclick = "markdown_header()"><img width="16" height="16" src = '<?php echo base_url('icons/header.png');?>'/></span>
+            <span class="button bold" title="bold" onclick = "markdown_bold()"><img width="16" height="16" src = '<?php echo base_url('icons/bold.png');?>'/></span>
+            <span class="button italic" title="italic" onclick = "markdown_italic()"><img width="16" height="16" src = '<?php echo base_url('icons/italic.png');?>'/></span>
+            <span class="button underline" title="underline" onclick = "markdown_underline()"><img width="16" height="16" src = '<?php echo base_url('icons/underline.png');?>'/></span>
+            <span class="button list" title="list" onclick = "markdown_list()"><img width="16" height="16" src = '<?php echo base_url('icons/list.png');?>'/></span>
+            <span class="button orderlist" title="orderlist" onclick = "markdown_orderlist()"><img width="16" height="16" src = '<?php echo base_url('icons/orderlist.png');?>'/></span>
+        </div>  
+        <textarea id = "content" rol="100" col="200" name="content"> </textarea>
         <br>
         <div style="height:20px"></div>
-        <button type ="submit">上傳成績</button>
+        <button type ="submit">上傳文章</button>
 </div>
+
+<style>
+    .button-wrap img
+    {
+        border: solid 5px white;
+        opacity: 1.0;
+    }
+    .button-wrap img:hover{
+        opacity: 0.5;
+    } 
+</style>
 
 <script>
     var str1;
@@ -54,5 +75,9 @@
         title.disabled = true;
         confirm_button.removeChild(element);
         return;
+    }
+    function markdown_header()
+    {
+        alert('23');
     }
 </script>

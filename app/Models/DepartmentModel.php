@@ -14,9 +14,9 @@ class DepartmentModel extends Model
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
-        'serialNumber',
         'url',
-        'department'
+        'department',
+        'school'
     ];
 
     // Dates

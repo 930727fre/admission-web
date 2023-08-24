@@ -4,23 +4,20 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class SignModel extends Model
+class PostModel extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'studentIdentity';
+    protected $table            = 'post';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
-        'serialNumber',
-        'identity',
-        'fullname',
-        'mail',
         'username',
-        'password',
-        'idCard'
+        'title',
+        'content',
+        'contentCSS'
     ];
 
     // Dates

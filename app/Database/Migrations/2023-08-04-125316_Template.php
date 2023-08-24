@@ -10,7 +10,7 @@ class Template extends Migration
     {
         $this->forge->addField(
             [   
-                'serialNumber'=>[   //准考證
+                'id'=>[   //准考證
                     'type'=>'INT',
                     'constraint'=>1000,
                     'unsigned'=>True,
@@ -22,11 +22,12 @@ class Template extends Migration
                 ],
                 'password'=>[
                     'type'=>'VARCHAR',
-                    'constraint'=>'50'
+                    'constraint'=>'50',
                 ],
                 'idCard'=>[ //身分證
                     'type'=>'INT',
-                    'constraint'=>1000
+                    'constraint'=>1000,
+                    "null" => true
                 ],
                 'fullname'=>[   
                     'type'=>'VARCHAR',
@@ -68,7 +69,7 @@ class Template extends Migration
 
         $this->forge->addField(
             [   
-                'serialNumber'=>[
+                'id'=>[
                     'type'=>'INT',
                     'constraint'=>1000,
                     'unsigned'=>True,
@@ -95,7 +96,7 @@ class Template extends Migration
 
         $this->forge->addField(
             [   
-                'serialNumber'=>[
+                'id'=>[
                     'type'=>'INT',
                     'constraint'=>1000,
                     'unsigned'=>True,
@@ -103,14 +104,17 @@ class Template extends Migration
                 ],
                 'url'=>[
                     'type'=>'VARCHAR',
-                    'constraint'=>'100'
+                    'constraint'=>'100',
+                    'null' => true
+                ],
+                'school'=>[
+                    'type'=>'VARCHAR',
+                    'constraint'=>'50'
                 ],
                 'department'=>[
                     'type'=>'VARCHAR',
                     'constraint'=>'50'
                 ],
-                
-
             ]
         );
         $this->forge->addKey('id',True);
@@ -247,6 +251,72 @@ class Template extends Migration
         $this->forge->addKey('id',True);
         $this->forge->createTable('time');
 
+        $this->forge->addField(
+            [   
+                'id'=>[
+                    'type'=>'INT',
+                    'constraint'=>1000,
+                    'unsigned'=>True,
+                    'auto_increment'=>True
+                ],
+                'num'=>[
+                    'type'=>'INT',
+                    'constraint'=>1000,
+                    'unsigned'=>True
+                ],
+                'school1'=>[
+                    'type'=>'VARCHAR',
+                    'constraint'=>'100'
+                ],
+                'department1'=>[
+                    'type'=>'VARCHAR',
+                    'constraint'=>'100'
+                ],
+                'school2'=>[
+                    'type'=>'VARCHAR',
+                    'constraint'=>'100'
+                ],
+                'department2'=>[
+                    'type'=>'VARCHAR',
+                    'constraint'=>'100'
+                ],
+                'school3'=>[
+                    'type'=>'VARCHAR',
+                    'constraint'=>'100'
+                ],
+                'department3'=>[
+                    'type'=>'VARCHAR',
+                    'constraint'=>'100'
+                ],
+                'school4'=>[
+                    'type'=>'VARCHAR',
+                    'constraint'=>'100'
+                ],
+                'department4'=>[
+                    'type'=>'VARCHAR',
+                    'constraint'=>'100'
+                ],
+                'school5'=>[
+                    'type'=>'VARCHAR',
+                    'constraint'=>'100'
+                ],
+                'department5'=>[
+                    'type'=>'VARCHAR',
+                    'constraint'=>'100'
+                ],
+                'school6'=>[
+                    'type'=>'VARCHAR',
+                    'constraint'=>'100'
+                ],
+                'department6'=>[
+                    'type'=>'VARCHAR',
+                    'constraint'=>'100'
+                ],
+            ]
+        );
+        $this->forge->addKey('id',True);
+        $this->forge->createTable('volunteer');
+
         $this->db->query("INSERT INTO adminIdentity (username, password) VALUES ('f', 'f');");
         $this->db->query("INSERT INTO adminIdentity (username, password) VALUES ('s', 's');");
         $this->db->query("INSERT INTO post (username, title, content, contentCSS)VALUES ('f', 'title1', 'hello world你好', '');");
@@ -265,6 +335,8 @@ class Template extends Migration
         $this->forge->dropTable('grade');
         $this->forge->dropTable('professorIdentity');
         $this->forge->dropTable('adminIdentity');
+        $this->forge->dropTable('time');
+        $this->forge->dropTable('volunteer');
     }
 
 }

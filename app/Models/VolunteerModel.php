@@ -4,23 +4,29 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class SignModel extends Model
+class VolunteerModel extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'studentIdentity';
+    protected $table            = 'volunteer';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
-        'serialNumber',
-        'identity',
-        'fullname',
-        'mail',
-        'username',
-        'password',
-        'idCard'
+        'num',
+        'school1',
+        'department1',
+        'school2',
+        'department2',
+        'school3',
+        'department3',
+        'school4',
+        'department4',
+        'school5',
+        'department5',
+        'school6',
+        'department6'
     ];
 
     // Dates

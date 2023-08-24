@@ -4,12 +4,16 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\DepartmentModel;
+helper('filesystem');
 
 
 class UploadController extends BaseController
 {
     public function index()
     {
+        $session = session();
+        $username = $session->get('username');
+        echo $username;
         return view('uploads/index');
     }
     public function uploadForm()
@@ -19,18 +23,22 @@ class UploadController extends BaseController
     public function upload()
     {
         $fileModel = new DepartmentModel();
-        $newName = $this -> request -> getVar('title');
+        $school = $this -> request -> getVar('school');
+        $department = $this -> request -> getVar('department');
         $files = $this -> request -> getFile('userfile');
-        $fileModel->where('department',$newName);
-        $result = $fileModel->findAll();
+        $url = $fileModel->where('school',$school)->where('department',$department)->first();
+
+        //print_r($files);
+        print_r($school);
+        $result = '1';
         if(empty($result))
         {
-            $url = 'public/uploads/'.$newName.'.jpg';
+            $url = 'public/uploads/'.'1'.'.jpg';
             $data=[
                 'url'=>$url,
-                'department'=>$newName
+                'department'=>'1'
             ];
-            $newName = $newName .'.jpg';
+            $newName = '1' .'.jpg';
             $files->move(ROOTPATH . 'public/uploads', $newName);
             $fileModel->save($data);
             echo '成功上傳';
@@ -43,6 +51,12 @@ class UploadController extends BaseController
         }
         //echo '<a href="/UploadController/"><button>回登入頁面</button></a>';
     }
+    public function show()
+    {
+        $fileModel = new DepartmentModel();
+        $file = $fileModel->findAll();
+        print_r($file);
+    }
     public function deletedepartment()
     {
         $fileModel = new DepartmentModel();
@@ -51,6 +65,33 @@ class UploadController extends BaseController
     }
     public function reset()
     {
-        
+        $fileModel = new DepartmentModel();
+        $url = 'uploads';
+        $map = directory_map($url, 1);
+        print_r($map);
+
+        $arr = $fileModel->findColumn('id');
+        if($arr!=NULL)
+        {
+            foreach($arr as $i)
+                $fileModel -> where('id', $i)->delete();
+        }
+        $school = ['台大', '清大', '交大', '成大'];
+        $department = ['數學系', '電機系', '資工系'];
+        $data = [
+            'school' => $school,
+            'department' => $department
+        ];
+        foreach($school as $i)
+        {
+            foreach($department as $j)
+            {
+                $newData = [
+                    'school' => $i,
+                    'department' => $j
+                ];
+                $fileModel->save($newData);
+            }
+        }
     }
 }
