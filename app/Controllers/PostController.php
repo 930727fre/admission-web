@@ -95,4 +95,12 @@ class PostController extends BaseController
     {
         return view('posts/creatPost');
     }
+
+    public function downloads() //due to merge conflict, the code is therefore moved here
+    {
+        return view('posts/downloads');
+    }
+    public function downloadFile(){
+        return $this->response->download(WRITEPATH.'uploads/'.$_GET['item'], null);
+    }    
 }

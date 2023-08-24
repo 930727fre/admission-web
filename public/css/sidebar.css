@@ -1,0 +1,31 @@
+.side{
+    background-color: rgb(33, 37, 41);
+    height: auto;
+    z-index: 1;
+    width: 190px;
+    margin-left: 0;
+    margin-top:12px;
+    position: fixed;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+.side ul{
+    list-style:none;
+}
+.side .sidetop{
+    font-size: 30px;
+    color: white
+}
+.side li{
+    font-size: 20px;
+    padding:7px 20px 7px 5px;
+    display: block;
+}
+.side a{
+    text-decoration: none;
+    color: white;
+}
+.side a:hover{
+    cursor: pointer;
+    color: rgb(140, 140, 140);
+}
