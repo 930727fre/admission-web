@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 
-class PostController extends BaseController
+class PageController extends BaseController
 {
     public function index()
     {
