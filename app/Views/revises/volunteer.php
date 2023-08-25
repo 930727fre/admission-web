@@ -51,7 +51,7 @@
         </select><br>
         <span>志願序5</span>
         <select nmae = 's9'>
-            <option value="">school</option>
+            <option value="">選擇學校</option>
             <option value="台大">台大</option>
             <option value="清大">清大</option>
             <option value="交大">交大</option>

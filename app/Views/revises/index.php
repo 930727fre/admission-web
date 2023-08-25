@@ -1,3 +1,7 @@
+<?php 
+    $session = session();
+    $identity = $session->get('identity');
+?>
 <div>
     <h1>資料修改專區</h1>
     <a href="/ReviseController/grade">

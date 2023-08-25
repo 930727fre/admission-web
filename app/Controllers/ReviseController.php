@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\GradeModel;
+use App\Models\ProfessorModel;
 use App\Models\StudentModel;
 use App\Models\VolunteerModel;
 use CodeIgniter\Session\Session;
@@ -15,7 +16,7 @@ class ReviseController extends BaseController
         $session = session();
         $sessionData = [
             'username'  => 'f',
-            'identity' => 'student',
+            'identity' => 'professor',
             'loggedIn' => true
         ];
         $session->set($sessionData);
@@ -115,6 +116,10 @@ class ReviseController extends BaseController
         else if($identity == 'professor')
         {
             //not complete
+            $model = new ProfessorModel();
+            $num = $model->where('username',$session->get('username'))->first()['id'];
+            $data = $model->find($num);
+             //print_r($data);
             return view("revises/professorProfile");
         }
 
@@ -148,35 +153,5 @@ class ReviseController extends BaseController
             //not complete
             echo 'No';
         }
-    }
-    private function isStudent()
-    {
-        $signModel = new SignModel();
-        $session = session();
-        $username = $session->get('username');
-        if(!$session->has('loggedIn'))
-        {
-            return 0;
-        }
-        $identity = ($signModel->where('username',$username)->first())['identity'];
-        echo $identity;
-        if($identity == 'student')
-            return 2;
-        else
-            return 1;
-    }
-
-    private function findID()
-    {
-        $signModel = new SignModel();
-        $session = session();
-        $username = $session->get('username');
-        if(!$session->has('loggedIn'))
-        {
-            return 0;
-        }
-        $ID = ($signModel->where('username',$username)->first())['serialNumber'];
-        echo $ID;
-        return $ID;
     }
 }
