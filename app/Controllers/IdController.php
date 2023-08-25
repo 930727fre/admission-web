@@ -62,22 +62,14 @@ class IdController extends BaseController
             "username" => $_POST["username"],
             "password" => hash("sha256",$_POST['password']),
             "mail" => $_POST["mail"],
-            "idCard" => $_POST["idCard"],
-            "fullname" => $_POST["fullname"],
-            "school" => $_POST["school"],
-            "address" => $_POST["address"],
-            "phoneNumber" => $_POST["phoneNumber"]
+            "fullname" => $_POST["fullname"]
         ];
         
         if($_POST['identity']=="student"){
             $model=new StudentModel();
-            $data["relationship"]=$_POST["relationship"];
-            $data["guardian"] =$_POST["guardian"];
-            $data["phoneNumberOfGuardian"] =$_POST["phoneNumberOfGuardian"];
         }
         else{
             $model=new ProfessorModel();
-            $data["site"]=$_POST["site"];
         }
         $model->save($data);
         return view('id/countdown.php',array("message"=>"註冊成功!"));
@@ -195,5 +187,16 @@ class IdController extends BaseController
         ];
 
         echo view('template', $data); // Load the template view with data
+    }
+    public function modifyPersonalInfo(){
+        $session=session();
+        if($session->get("identity")=="student"){
+            $model=new StudentModel();
+        }else{
+            $model=new ProfessorModel();
+        }
+        $model->where("username",$session->get("username"))->set($_POST)->update();
+        return view('id/countdown.php',array("message"=>"修改成功!"));
+
     }
 }

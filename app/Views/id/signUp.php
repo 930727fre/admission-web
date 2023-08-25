@@ -23,34 +23,6 @@
         <label for="mail">Mail: </label>
         <input type="email" name="mail" id="mail" required> <br>
 
-        <label for="idCard">身分證字號：</label>
-        <input type="text" name="idCard" id="idCard" required><br>
-
-        <label for="school">學校：</label>
-        <input type="text" name="school" id="school" required><br>
-
-        <label for="phoneNumber">電話號碼：</label>
-        <input type="tel" name="phoneNumber" id="phoneNumber" required><br>
-
-        <label for="address">地址：</label>
-        <input type="text" name="address" id="address" required><br>  
-
-        <div class="studentField">
-            <label for="guardian">監護人：</label>
-            <input type="text" name="guardian" id="guardian" class="studentRequired" required><br>        
-
-            <label for="relationship">與監護人的關係：</label>
-            <input type="text" name="relationship" id="relationship" class="studentRequired" required><br>    
-
-            <label for="phoneNumberOfGuardian">監護人電話：</label>
-            <input type="text" name="phoneNumberOfGuardian" id="phoneNumberOfGuardian" class="studentRequired" required><br>           
-        </div>
-
-        <div class="professorField">
-            <label for="site">私人網址： </label>
-            <input type="site" name="site" id="site" class="professorRequired" required><br>
-        </div>   
-
         <label for="username" id="usernameLabel">
             Username: <span id="username_warning" style="color: red;"></span>
         </label>
@@ -86,27 +58,6 @@
                             }
                         }
                     });
-                });
-                $('.professorField').hide();
-                $('.professorRequired').removeAttr('required');
-
-                $('#identity').on('change', function () {
-                    const selectedIdentity = $(this).val();
-
-                    // Show the appropriate field section based on selected identity
-                    if (selectedIdentity === 'student') {
-                        $('.studentField').show();
-                        $('.studentRequired').attr('required', true);
-                        $('.professorField').hide();
-                        $('.professorRequired').removeAttr('required');
-
-                    } else if (selectedIdentity === 'professor') {
-                        $('.professorField').show();
-                        $('.professorRequired').attr('required', true);
-                        $('.studentField').hide();
-                        $('.studentRequired').removeAttr('required');
-
-                    }
                 });
             });
             

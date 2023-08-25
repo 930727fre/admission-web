@@ -23,31 +23,38 @@ class Template extends Migration
                     'type'=>'TEXT'
                 ],
                 'idCard'=>[
-                    'type'=>'TEXT'
+                    'type'=>'TEXT',
+                    'null'=>true
                 ],
                 'fullname'=>[   
                     'type'=>'TEXT'
                 ],
                 'school'=>[   
-                    'type'=>'TEXT'
+                    'type'=>'TEXT',
+                    'null'=>true
                 ],
                 'mail'=>[   
                     'type'=>'TEXT'
                 ],              
                 'phoneNumber'=>[   
-                    'type'=>'TEXT'
+                    'type'=>'TEXT',
+                    'null'=>true
                 ],
                 'relationship'=>[   
-                    'type'=>'TEXT'
+                    'type'=>'TEXT',
+                    'null'=>true
                 ],
                 'phoneNumberOfGuardian'=>[
-                    'type'=>'TEXT'
+                    'type'=>'TEXT',
+                    'null'=>true
                 ],
                 'guardian'=>[   
-                    'type'=>'TEXT'
+                    'type'=>'TEXT',
+                    'null'=>true
                 ],
                 'address'=>[   
-                    'type'=>'TEXT'
+                    'type'=>'TEXT',
+                    'null'=>true
                 ]
 
             ]
@@ -147,22 +154,27 @@ class Template extends Migration
                     'type'=>'TEXT'
                 ],
                 'idCard'=>[
-                    'type'=>'TEXT'
+                    'type'=>'TEXT',
+                    'null'=>true
                 ],
                 'school'=>[   
-                    'type'=>'TEXT'
+                    'type'=>'TEXT',
+                    'null'=>true
                 ],
                 'mail'=>[   
                     'type'=>'TEXT'
                 ],               
                 'phoneNumber'=>[   
-                    'type'=>'TEXT'
+                    'type'=>'TEXT',
+                    'null'=>true
                 ],
                 'site'=>[   
-                    'type'=>'TEXT'
+                    'type'=>'TEXT',
+                    'null'=>true
                 ],
                 'address'=>[   
-                    'type'=>'TEXT'
+                    'type'=>'TEXT',
+                    'null'=>true
                 ]
 
             ]
