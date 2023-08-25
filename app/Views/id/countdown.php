@@ -21,7 +21,7 @@
                 setTimeout(updateCountdown, 1000); // Call this function again after 1 second
             } else {
                 // Perform the redirect after the countdown is finished
-                window.location.replace("<?php if(isset($url)){echo $url;}else{echo "/idController";} ?>");
+                window.location.replace("<?php if(isset($url)){echo $url;}else{echo "/";} ?>");
             }
         }
 
