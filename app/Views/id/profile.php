@@ -72,9 +72,9 @@
 
         <input type="submit" value="註冊" id="register_button">
 
-
     </form>
-
+        
+    <button herf = '/revises/studentProfiles'>revise</button>
     <script>
         $(document).ready(function () {
             // JavaScript code to handle the username availability check
