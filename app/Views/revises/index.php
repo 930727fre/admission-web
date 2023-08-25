@@ -15,4 +15,8 @@
     <a href="/ReviseController/profile">
         <button>個人資料修改</button>
     </a>
+    <br>
+    <a href="/">
+        <button>首頁</button>
+    </a>
 </div>

@@ -4,15 +4,10 @@
         <button>檔案上傳</button>
     </a>
     <br>
-    <a href="uploadForm">
-        <button>志願序上傳</button>
-    </a>
-    <br>
-    <a href="uploadForm">
-        <button>個人資料上傳</button>
-    </a>
-    <br>
-    <a href="uploadForm">
-        <button>文章上傳</button>
+    <a href="findSchool">
+        <button>尋找學校</button>
+    </a><br>
+    <a href="/">
+        <button>首頁</button>
     </a>
 </div>

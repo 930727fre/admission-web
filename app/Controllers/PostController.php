@@ -10,13 +10,19 @@ class PostController extends BaseController
 {
     public function index()
     {
-        //session 假設
         $session = session();
-        $sessionData = [
-            'username'  => '7',
-        ];
-        $session->set($sessionData);
-        //$session->destroy();
+        if($session->get('signedIn')==false)
+        {
+            echo '你尚未登入';
+            echo '<a href="/"><button>回個人頁面</button></a>';
+            return;
+        }
+        if($session->get('identity')=='student')
+        {
+            echo 'you are not professor';
+            echo '<a href="/"><button>回個人頁面</button></a>';
+            return;
+        }
         return view('posts/index');
     }
     public function store()
@@ -95,12 +101,5 @@ class PostController extends BaseController
     {
         return view('posts/creatPost');
     }
-
-    public function downloads() //due to merge conflict, the code is therefore moved here
-    {
-        return view('posts/downloads');
-    }
-    public function downloadFile(){
-        return $this->response->download(WRITEPATH.'uploads/'.$_GET['item'], null);
-    }    
+  
 }

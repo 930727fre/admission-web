@@ -26,21 +26,30 @@ class UploadController extends BaseController
         $school = $this -> request -> getVar('school');
         $department = $this -> request -> getVar('department');
         $files = $this -> request -> getFile('userfile');
-        $url = $fileModel->where('school',$school)->where('department',$department)->first();
-
+        $url = 'uploads/';
+        $result = $fileModel->where('school',$school)->where('department',$department)->first();
         //print_r($files);
         print_r($school);
-        $result = '1';
+        print_r($department);
+        //print_r($result);
         if(empty($result))
         {
-            $url = 'public/uploads/'.'1'.'.jpg';
             $data=[
-                'url'=>$url,
-                'department'=>'1'
+                'url'=> $url,
+                'school' => $school,
+                'department'=> $department
             ];
-            $newName = '1' .'.jpg';
-            $files->move(ROOTPATH . 'public/uploads', $newName);
             $fileModel->save($data);
+            $id = $fileModel->where('school',$school)->where('department',$department)->first()['id'];
+            $newName = $id . '.jpg';
+            $url = $url . $id . '.jpg';
+            $files->move(ROOTPATH . 'public/uploads', $newName);
+            $data=[
+                'url'=> $url,
+                'school' => $school,
+                'department'=> $department
+            ];
+            $fileModel ->update($id, $data);
             echo '成功上傳';
             return view('uploads/index');
         }
@@ -56,11 +65,34 @@ class UploadController extends BaseController
         $fileModel = new DepartmentModel();
         $file = $fileModel->findAll();
         print_r($file);
+        $img = base_url('uploads/d.jpg');
+        echo '<img src = "'.$img.'"/>';
+    }
+    public function findSchool()
+    {
+        $schoolModel = new DepartmentModel();
+        $data = ["row" => $schoolModel->findAll()];
+        foreach($data["row"] as $i)
+            print_r($i);
+        return view('uploads/findSchool', $data);
+    }
+    public function showSchool()
+    {
+        $fileModel = new DepartmentModel();
+        $school = $this -> request -> getVar('school');
+        $department = $this -> request -> getVar('department');
+        $id = $fileModel->where('school',$school)->where('department',$department)->first()['id'];
+        $url = $fileModel->find($id)['url'];
+        $img = base_url($url);
+        echo '<img src = "'.$img.'"/>';
+        echo $id;
+        print_r($url);
+        echo '<a href="/UploadController"><button>回頁面</button></a>';
     }
     public function deletedepartment()
     {
         $fileModel = new DepartmentModel();
-        $fileModel->where('department','中正數學系');
+        $fileModel->where('school','中正');
         $fileModel->delete();
     }
     public function reset()
@@ -88,10 +120,12 @@ class UploadController extends BaseController
             {
                 $newData = [
                     'school' => $i,
-                    'department' => $j
+                    'department' => $j,
+                    'url' => 'uploads/1.jpg'
                 ];
                 $fileModel->save($newData);
             }
         }
+        echo '<a href="/UploadController"><button>回個人頁面</button></a>';
     }
 }
