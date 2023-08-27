@@ -25,7 +25,7 @@ class PostController extends BaseController
         }
         return view('posts/index');
     }
-    public function store()
+    public function storePost()
     {
         $session = session();
         $username = $session->get('username');
@@ -36,6 +36,7 @@ class PostController extends BaseController
             'content' => $this->request->getVar('content'),
             'contentCSS' => 'contentCSS'    //wait CSS
         ];
+        // print_r($data);
         $model->save($data);
         echo '<h2 style = "text -align : center">創建貼文成功!!<h2>';
         echo '<a href="/PostController/"><button>回POST頁面</button></a>';
@@ -51,13 +52,13 @@ class PostController extends BaseController
         ];
         return view('posts/list',$data);
     }
-    public function revise($id)
+    public function revisePost($id)
     {
         $model = new PostModel();
         $data = [
             'posts' => $model->find($id)
         ];
-        return view('posts/revise', $data);
+        return view('posts/revisePost', $data);
     }
     public function reviseStore()
     {
@@ -97,9 +98,9 @@ class PostController extends BaseController
             $model -> where('id', $i)->delete();
 
     }
-    public function creat()
+    public function create()
     {
-        return view('posts/creatPost');
+        return view('posts/createPost');
     }
   
 }
