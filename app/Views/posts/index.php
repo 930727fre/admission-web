@@ -4,7 +4,7 @@
     <div>
         <h1>文章上傳專區</h1>
         <br>
-        <a href="/PostController/creat">
+        <a href="/PostController/create">
             <button>文章上傳</button>
         </a><br>
         <a href="/PostController/postList">
