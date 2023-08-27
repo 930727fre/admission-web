@@ -43,7 +43,7 @@ class IdController extends BaseController
                     'signedIn' => true,
                     'identity'=>$data['identity']
                 ]);
-                return view("id/profile.php");
+                return view("home.php");
             }
         }
         return view("id/signIn.php",array("message"=>"帳號/密碼輸入錯誤"));

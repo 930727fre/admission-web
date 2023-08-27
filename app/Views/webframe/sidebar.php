@@ -12,5 +12,4 @@
         <li><a href="/PageController/stats">統計數據</a></li>
         <li><a href="/PageController/downloads">下載專區</a></li>
         <li><a href="#">相關網站</a></li>
-        <li><a href="/ReviseController/testTemplate">測試模板</a></li>
 </ul>

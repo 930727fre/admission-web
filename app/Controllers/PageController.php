@@ -8,7 +8,7 @@ class PageController extends BaseController
 {
     public function index()
     {
-        return view('pages/index');
+        return view("index.php");
     }
     public function downloads()
     {

@@ -44,8 +44,9 @@ class ReviseController extends BaseController
             //print_r($id);
             $gradeModel->update($id,$data);
         }
-        echo '<h2 style = "text -align : center">修改成功!!<h2>';
-        echo '<a href="/ReviseController/"><button>回個人首頁</button></a>';
+        //echo '<h2 style = "text -align : center">修改成功!!<h2>';
+        //echo '<a href="/ReviseController/"><button>回個人首頁</button></a>';
+        return view('id/countdown.php',array("message"=>"修改成功!"));
     }
     public function deleteGrade()
     {
@@ -74,7 +75,7 @@ class ReviseController extends BaseController
         $StudentModel = new StudentModel();
         $num = $StudentModel->where('username',$session->get('username'))->first()['id'];
         $data = $GrandModel->find($num);
-        print_r($data);
+        //print_r($data);
         if(empty($data))
         {
             $data = [
@@ -129,7 +130,7 @@ class ReviseController extends BaseController
             'school6' => $this->request->getVar("School6"),
             'department6' => $this->request->getVar("Department6"),
         ];
-        print_r($data);
+        //print_r($data);
         $result = $volunteerModel->where('num', $num)->first();
         if(empty($result))
             $volunteerModel->save($data);
@@ -139,9 +140,10 @@ class ReviseController extends BaseController
             echo $key;
             $volunteerModel->update($key, $data);
         }
-        print_r($result);
-        echo '<h2 style = "text -align : center">修改成功!!<h2>';
-        echo '<a href="/reviseController/"><button>回個人頁面</button></a>';
+        //print_r($result);
+        //echo '<h2 style = "text -align : center">修改成功!!<h2>';
+        return view('id/countdown.php',array("message"=>"修改成功!"));
+        //echo '<a href="/reviseController/"><button>回個人頁面</button></a>';
     }
     public function profile()
     {
@@ -167,7 +169,7 @@ class ReviseController extends BaseController
             $model = new ProfessorModel();
             $num = $model->where('username',$session->get('username'))->first()['id'];
             $data = $model->find($num);
-            print_r($data);
+            //print_r($data);
             return view("revises/professorProfile",$data);
         }
 
@@ -192,9 +194,10 @@ class ReviseController extends BaseController
             ];
             //echo $id;
             $model->update($id,$data);
-            print_r($data);
-            echo '<h2 style = "text -align : center">修改成功!!<h2>';
-            echo '<a href="/reviseController/"><button>回個人頁面</button></a>';
+            //print_r($data);
+            //echo '<h2 style = "text -align : center">修改成功!!<h2>';
+            //echo '<a href="/reviseController/"><button>回個人頁面</button></a>';
+            return view('id/countdown.php',array("message"=>"修改成功!"));
         }
         else if($identity == 'professor')
         {
@@ -208,11 +211,12 @@ class ReviseController extends BaseController
                 'site' => $this->request->getVar('site'),
                 'address' => $this->request->getVar('address')
             ];
-            print_r($data);
+            //print_r($data);
             $model->update($id,$data);
-            print_r($data);
-            echo '<h2 style = "text -align : center">修改成功!!<h2>';
-            echo '<a href="/reviseController/"><button>回個人頁面</button></a>';
+            //print_r($data);
+            //echo '<h2 style = "text -align : center">修改成功!!<h2>';
+            //echo '<a href="/reviseController/"><button>回個人頁面</button></a>';
+            return view('id/countdown.php',array("message"=>"修改成功!"));
         }
     }
 
