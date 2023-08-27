@@ -26,8 +26,8 @@
 | 8/24 |merge system|merge system|merge system, add page|
 | 8/25 |profile.php and fix bug|fix bug|      |
 | 8/26 |        |      |      |
-| 8/27 |        |      |      |
-| 8/28 |        |      |      |
+| 8/27 |NULL|complete grade, profile, and volunteer system|complete template|
+| 8/28 |complete editor, merge code|merge code|NULL|
 | 8/29 |        |      |      |
 | 8/30 |        |      |      |
 | 8/31 |        |      |      |
