@@ -14,12 +14,12 @@ class GradeModel extends Model
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
-        'Id',
-        'Chinese',
-        'English',
-        'Math',
-        'Science',
-        'Social'
+        'num',
+        'chinese',
+        'english',
+        'math',
+        'science',
+        'social'
     ];
     
     // Dates

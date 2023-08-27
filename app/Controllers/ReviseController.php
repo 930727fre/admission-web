@@ -3,63 +3,49 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Database\Migrations\Template;
 use App\Models\GradeModel;
-use App\Models\SignModel;
+use App\Models\ProfessorModel;
+use App\Models\StudentModel;
 use App\Models\VolunteerModel;
+use App\Models\DepartmentModel;
 use CodeIgniter\Session\Session;
 
 class ReviseController extends BaseController
 {
     public function index()
     {
-        $session = session();
-        $sessionData = [
-            'username'  => 'f',
-            'identity' => 'student',
-            'loggedIn' => true
-        ];
-        $session->set($sessionData);
         return view('revises/index');
     }
     public function gradeStore()
     {
         //view grade
+        $session = session();
+        $studentModel = new StudentModel();
+        $num = $studentModel->where('username',$session->get('username'))->first()['id'];
         $gradeModel = new GradeModel();
-        $ID = $this -> findID();
-        if(!$ID)
-        {
-            echo '<h2 style = "text -align : center">你尚未登入!!<h2>';
-            echo '<a href="/IdController/"><button>回登入頁面</button></a>';
-            return view("revises/blank");
-        }
+        $result = $gradeModel->where('num', $num)->first();
         $data = [
-            'Id' => $ID,   
-            'Chinese' => $this->request->getVar('Chinese'),
-            'English' => $this->request->getVar('English'),
-            'Math' => $this->request->getVar('Math'),
-            'Science' => $this->request->getVar('Science'),
-            'Social' => $this->request->getVar('Social')
+            'num' => $num,   
+            'chinese' => $this->request->getVar('Chinese'),
+            'english' => $this->request->getVar('English'),
+            'math' => $this->request->getVar('Math'),
+            'science' => $this->request->getVar('Science'),
+            'social' => $this->request->getVar('Social')
 
         ];
-        $gradeModel->where('Id',$ID);
-        $result = $gradeModel->findAll();
-        //print_r($data);
         if(empty($result))
         {
             $gradeModel->save($data);
-            echo "還沒存在了";   
         }
         else
         {
-            $gradeModel->where('Id',$ID);
-            $gradeModel->delete();
-            $gradeModel->save($data);
-            echo "已經存在了";
+            $id = $result['id'];
+            //print_r($id);
+            $gradeModel->update($id,$data);
         }
-        //print_r($data);
         echo '<h2 style = "text -align : center">修改成功!!<h2>';
         echo '<a href="/ReviseController/"><button>回個人首頁</button></a>';
-        return view("revises/blank");
     }
     public function deleteGrade()
     {
@@ -67,68 +53,67 @@ class ReviseController extends BaseController
         $gradeModel->where('Id','1');
         $gradeModel->delete();
     }
-    public function redirectTo()
-    {   
-        if($this->request->getVar('where') == 'grade')
+    public function grade()
+    {
+        //check session
+        $session = session();
+        if($session->get('signedIn')==false)
         {
-            $identity = $this -> isStudent();
-            if($identity == 1) //professor
-            {
-                echo '<h2 style = "text -align : center">你不需要輸入成績!!<h2>';
-                echo '<a href="/ReviseController/redirectTo?where=index"><button>回上一頁</button></a>';
-                return view("revises/blank");
-            }
-            else if($identity == 2) //student
-            {
-                return view('revises/grade');
-            }
-            else
-            {
-                echo '<h2 style = "text -align : center">你尚未登入!!<h2>';
-                echo '<a href="/IdController/"><button>回登入頁面</button></a>';
-                return view("revises/blank");
-            }
+            echo '你尚未登入';
+            echo '<a href="/"><button>回個人頁面</button></a>';
+            return;
         }
-        else if($this->request->getVar('where') == 'profile')
+        if($session->get('identity')=='professor')
         {
-            $identity = $this -> isStudent();
-            if($identity == 1)
-                return view('revises/professorProfile');
-            else if($identity == 2)
-                return view('revises/studentProfile');
-            else
-            {
-                echo '<h2 style = "text -align : center">你尚未登入!!<h2>';
-                echo '<a href="/IdController/"><button>回登入頁面</button></a>';
-                return view("revises/blank");
-            }
+            echo 'you are not student';
+            echo '<a href="/"><button>回個人頁面</button></a>';
+            return;
         }
-        else
+
+        $GrandModel = new GradeModel();
+        $StudentModel = new StudentModel();
+        $num = $StudentModel->where('username',$session->get('username'))->first()['id'];
+        $data = $GrandModel->find($num);
+        print_r($data);
+        if(empty($data))
         {
-            return view("revises/{$this->request->getVar('where')}.php");
-        }    
+            $data = [
+                'num' => $num,   
+                'chinese' => 0,
+                'english' => 0,
+                'math' => 0,
+                'science' => 0,
+                'social' => 0
+    
+            ];
+        }
+        return view('revises/grade', $data);
     }
     public function volunteer()
     {
         $session = session();
-        $volunteerModel = new VolunteerModel();
-        $signModel =new SignModel();
-        $num = $signModel->where('username',$session->get('username'))->first()['id'];
-        $result = $volunteerModel->where('num', $num)->first();
-        if(empty($result))
-            return view("revises/volunteer");
-        else
+        if($session->get('signedIn')==false)
         {
-            return view("revises/volunteer");
+            echo '你尚未登入';
+            echo '<a href="/"><button>回個人頁面</button></a>';
+            return;
         }
-
+        if($session->get('identity')=='professor')
+        {
+            echo 'you are not student';
+            echo '<a href="/"><button>回個人頁面</button></a>';
+            return;
+        }
+        $schoolModel = new DepartmentModel();
+        $data = ["row" => $schoolModel->findAll()];
+        return view("revises/volunteer",$data);
     }
     public function volunteerStore()
     {
         $session = session();
         $volunteerModel = new VolunteerModel();
-        $signModel =new SignModel();
-        $num = $signModel->where('username',$session->get('username'))->first()['id'];
+        $studentModel =new StudentModel();
+        $num = $studentModel->where('username',$session->get('username'))->first()['id'];
         $data = [
             'num' => $num,
             'school1' =>  $this->request->getVar("School1"),
@@ -162,9 +147,15 @@ class ReviseController extends BaseController
     {
         $session = session();
         $identity = $session -> get('identity');
+        if($session->get('signedIn')==false)
+        {
+            echo '你尚未登入';
+            echo '<a href="/"><button>回個人頁面</button></a>';
+            return;
+        }
         if($identity == 'student')
         {
-            $model = new SignModel();
+            $model = new StudentModel();
             $num = $model->where('username',$session->get('username'))->first()['id'];
             $data = $model->find($num);
             //print_r($data);
@@ -173,7 +164,11 @@ class ReviseController extends BaseController
         else if($identity == 'professor')
         {
             //not complete
-            return view("revises/professorProfile");
+            $model = new ProfessorModel();
+            $num = $model->where('username',$session->get('username'))->first()['id'];
+            $data = $model->find($num);
+            print_r($data);
+            return view("revises/professorProfile",$data);
         }
 
     }
@@ -183,7 +178,7 @@ class ReviseController extends BaseController
         $identity = $session -> get('identity');
         if($identity == 'student')
         {
-            $model = new SignModel();
+            $model = new StudentModel();
             $id = $model->where('username',$session->get('username'))->first()['id'];
             $data = [
                 'fullname' => $this->request->getVar('fullname'),   
@@ -203,38 +198,30 @@ class ReviseController extends BaseController
         }
         else if($identity == 'professor')
         {
-            //not complete
-            echo 'No';
+            $model = new ProfessorModel();
+            $id = $model->where('username',$session->get('username'))->first()['id'];
+            $data = [
+                'fullname' => $this->request->getVar('fullname'),   
+                'school' => $this->request->getVar('school'),
+                'mail' => $this->request->getVar('mail'),
+                'phoneNumber' => $this->request->getVar('phoneNumber'),
+                'site' => $this->request->getVar('site'),
+                'address' => $this->request->getVar('address')
+            ];
+            print_r($data);
+            $model->update($id,$data);
+            print_r($data);
+            echo '<h2 style = "text -align : center">修改成功!!<h2>';
+            echo '<a href="/reviseController/"><button>回個人頁面</button></a>';
         }
-    }
-    private function isStudent()
-    {
-        $signModel = new SignModel();
-        $session = session();
-        $username = $session->get('username');
-        if(!$session->has('loggedIn'))
-        {
-            return 0;
-        }
-        $identity = ($signModel->where('username',$username)->first())['identity'];
-        echo $identity;
-        if($identity == 'student')
-            return 2;
-        else
-            return 1;
     }
 
-    private function findID()
+    public function testTemplate()
     {
-        $signModel = new SignModel();
         $session = session();
-        $username = $session->get('username');
-        if(!$session->has('loggedIn'))
-        {
-            return 0;
-        }
-        $ID = ($signModel->where('username',$username)->first())['serialNumber'];
-        echo $ID;
-        return $ID;
+        $model = new ProfessorModel();
+        $num = $model->where('username',$session->get('username'))->first()['id'];
+        $data = $model->find($num);
+        return view("revises/test",$data);
     }
 }

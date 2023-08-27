@@ -96,6 +96,10 @@ class Template extends Migration
                     'auto_increment'=>True
                 ],
                 'url'=>[   
+                    'type'=>'TEXT',
+                    'null'=>true
+                ],
+                'school'=>[   
                     'type'=>'TEXT'
                 ],
                 'department'=>[   
@@ -115,6 +119,11 @@ class Template extends Migration
                     'constraint'=>1000,
                     'unsigned'=>True,
                     'auto_increment'=>True
+                ],
+                'num'=>[
+                    'type'=>'INT',
+                    'constraint'=>1000,
+                    'unsigned'=>True
                 ],
                 'chinese'=>[   
                     'type'=>'TEXT'

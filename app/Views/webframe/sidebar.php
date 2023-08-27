@@ -4,12 +4,13 @@
         <hr style="color:white;width: 140px;">
         <li><a href="/"><button type="button" class="btn btn-primary" style="font-size: 20px;">回首頁</button></a></li>
         <li><a href="#">訊息公告</a></li>
-        <li><a href="#">成績上傳</a></li>
-        <li><a href="#">個資修改</a></li>
-        <li><a href="#">公告上傳</a></li>        
-        <li><a href="/PostController/law">法令規章</a></li>
+        <li><a href="/ReviseController/grade">成績上傳</a></li>
+        <li><a href="/ReviseController/profile">個資修改</a></li>
+        <li><a href="/PostController">公告上傳</a></li>
+        <li><a href="/PageController/law">法令規章</a></li>
         <li><a href="#">重要時程</a></li>
-        <li><a href="/PostController/stats">統計數據</a></li>
-        <li><a href="/PostController/downloads">下載專區</a></li>
+        <li><a href="/PageController/stats">統計數據</a></li>
+        <li><a href="/PageController/downloads">下載專區</a></li>
         <li><a href="#">相關網站</a></li>
+        <li><a href="/ReviseController/testTemplate">測試模板</a></li>
 </ul>
