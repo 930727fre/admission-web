@@ -11,6 +11,10 @@ class PostController extends BaseController
     public function index()
     {
         $session = session();
+        $control = new TimeController();
+        $result = $control->limitTime(8,16,'hour');
+        if(!$result)
+            return view('filter/notEnter',$msg = ["msg"=>"時間未開放"]);
         if($session->get('signedIn')==false)
         {
             echo '你尚未登入';

@@ -55,7 +55,7 @@ class TimeController extends BaseController
         $newOffset = $this->getOffset($time,$newTime);
         $timeModel->save($newOffset);
         echo '儲存成功<br>';
-        echo '<a href="/TimeController/getTime"><button>回個人首頁</button></a>';
+        echo '<a href="/"><button>回首頁</button></a>';
     }
     public function resetTime()
     {
