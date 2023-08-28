@@ -24,8 +24,7 @@
   <style>
     .downloadarea a{
       list-style: square;
-      font-size: 20px;
-      color: rgb(224, 38, 38);
+      font-size: 23px;
     }
     .downloadarea a:hover{
       color: rgb(220, 137, 137);
