@@ -22,6 +22,7 @@
             <br>
             <div style="height:20px"></div>
             <button type ="submit">上傳文章</button>
+            <input id = "hideContent" name = "content" hidden>;
     </div>
 
     <style>
@@ -85,3 +86,37 @@
         }
     </script>
 <?= $this->endSection() ?>
+
+
+```   <script>
+        var simplemde = new SimpleMDE({
+            toolbar: ["bold", "italic", "heading", "|", "quote","heading-bigger","heading-smaller","code","quote","|","unordered-list","ordered-list","image","table","|","guide"],
+            element: document.getElementById("mdInput") });
+        var str="This text will appear in the editorefs\n1. jfis\n2. efji\n3. jsiefjo\n| Column 1 | Column 2 | Column 3 |\n| -------- | -------- | -------- |\n| Text     | Tesfaefsaefxt     | Text     |\n| Text     | Text     | Text     |";
+        simplemde.value(str);
+        document.getElementById('content').innerHTML = marked(str);
+        var str1;
+
+        function storeData()
+        {
+            var content = marked(simplemde.value());
+            var btn =document.getElementById("hideContent");
+            btn.setAttribute('value','content');
+            alert(btn.value);
+            
+        }
+        $(document).ready(function () {
+            // $('#mdInput').on('input', function () {    
+            //     // const str = $(this).val();    
+            //     // document.getElementById('content').innerHTML = marked(str);
+            //     document.getElementById('content').innerHTML = marked(simplemde.value());
+            // });
+            // alert(simplemde.element.value);
+            simplemde.codemirror.on("change", function(){
+                document.getElementById('content').innerHTML = marked(simplemde.value());
+            });            
+        });
+
+
+
+    </script>```

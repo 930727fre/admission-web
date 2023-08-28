@@ -72,8 +72,6 @@ class UploadController extends BaseController
     {
         $schoolModel = new DepartmentModel();
         $data = ["row" => $schoolModel->findAll()];
-        foreach($data["row"] as $i)
-            print_r($i);
         return view('uploads/findSchool', $data);
     }
     public function showSchool()
@@ -85,9 +83,9 @@ class UploadController extends BaseController
         $url = $fileModel->find($id)['url'];
         $img = base_url($url);
         echo '<img src = "'.$img.'"/>';
-        echo $id;
-        print_r($url);
-        echo '<a href="/UploadController"><button>回頁面</button></a>';
+        //echo $id;
+        //print_r($url);
+        echo '<div style = "text-align: center"><a href="/"><button>回首頁</button></a></div>';
     }
     public function deletedepartment()
     {

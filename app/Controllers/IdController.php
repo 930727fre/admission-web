@@ -43,7 +43,7 @@ class IdController extends BaseController
                     'signedIn' => true,
                     'identity'=>$data['identity']
                 ]);
-                return view("home.php");
+                return redirect('/');
             }
         }
         return view("id/signIn.php",array("message"=>"帳號/密碼輸入錯誤"));
@@ -113,7 +113,7 @@ class IdController extends BaseController
         // echo $session->get("signedIn");
 
 
-        return view("/home");
+        return redirect('/');
     }
     public function forgetPassword(){
         return view("id/forgetPassword.php");

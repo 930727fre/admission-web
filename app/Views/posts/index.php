@@ -9,6 +9,9 @@
         </a><br>
         <a href="/PostController/postList">
             <button>文章修改</button>
+        </a><br>
+        <a href="/PostController/showAllPost">
+            <button>文章展示</button>
         </a>
         <br>
         <a href="/">

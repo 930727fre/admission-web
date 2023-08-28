@@ -1,11 +1,17 @@
 <?php
 
 namespace App\Controllers;
+use App\Models\PostModel;
 
 class Home extends BaseController
 {
-    public function index(): string
+    
+    public function index()
     {
-        return view('home');
+        $model = new PostModel();
+        $data = [
+            'posts' => $model->findAll()
+        ];
+        return view('home',$data);
     }
 }

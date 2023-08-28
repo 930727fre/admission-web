@@ -1,3 +1,5 @@
+<?= $this->extend('template') ?>
+<?= $this->section('content') ?>
 <div style = "text -align : center">
 
     <form method="post" action="showSchool" enctype="multipart/form-data">
@@ -25,3 +27,5 @@
         //alert(arr[0]);
     }
 </script>
+
+<?= $this->endSection('content') ?>

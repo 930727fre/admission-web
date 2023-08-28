@@ -25,6 +25,11 @@ class PostController extends BaseController
         }
         return view('posts/index');
     }
+    public function create()
+    {
+        return view('posts/createPost');
+    }
+  
     public function storePost()
     {
         $session = session();
@@ -36,7 +41,7 @@ class PostController extends BaseController
             'content' => $this->request->getVar('content'),
             'contentCSS' => 'contentCSS'    //wait CSS
         ];
-        // print_r($data);
+        //print_r($data);
         $model->save($data);
         echo '<h2 style = "text -align : center">創建貼文成功!!<h2>';
         echo '<a href="/PostController/"><button>回POST頁面</button></a>';
@@ -58,6 +63,7 @@ class PostController extends BaseController
         $data = [
             'posts' => $model->find($id)
         ];
+        //print_r($data);
         return view('posts/revisePost', $data);
     }
     public function reviseStore()
@@ -72,6 +78,7 @@ class PostController extends BaseController
             'content' => $this->request->getVar('content'),
             'contentCSS' => 'contentCSS'    //wait CSS
         ];
+        print_r($data);
         $model->update($this->request->getVar('id'),$data);
         echo '<h2 style = "text -align : center">修改成功!!<h2>';
         echo '<a href="/PostController/"><button>回POST頁面</button></a>';
@@ -98,9 +105,21 @@ class PostController extends BaseController
             $model -> where('id', $i)->delete();
 
     }
-    public function create()
+    public function showAllPost()
     {
-        return view('posts/createPost');
+        $model = new PostModel();
+        $data = [
+            'posts' => $model->findAll()
+        ];
+        return view('posts/allList',$data);
     }
-  
+    public function showPost($id)
+    {
+        $model = new PostModel();
+        $data = [
+            'posts' => $model->find($id)
+        ];
+        //print_r($data);
+        return view('posts/showPost', $data);
+    }
 }
