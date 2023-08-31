@@ -28,6 +28,6 @@
 | 8/26 |NULL|complete grade, profile, and volunteer system|complete template|
 | 8/27 |complete editor, merge code|merge code|NULL|
 | 8/28 |NULL|post list complete|finish some front-end pages|
-| 8/29 |        |      |      |
-| 8/30 |        |      |      |
-| 8/31 |        |      |      |
+| 8/29 |merge code|merge code|online brochure and three front-end pages|
+| 8/30 |NULL|NULL|add front-end pages|
+| 8/31 |NULL|NULL|add front-end pages|
