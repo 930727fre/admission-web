@@ -26,6 +26,22 @@ class PageController extends BaseController
     {
         return view('pages/stats');
     }
+    public function onlinebrochure()
+    {
+        return view('pages/onlinebrochure');
+    }
+    public function onlinebrochure_1()
+    {
+        return view('pages/onlinebrochure_1');
+    }
+    public function onlinebrochure_2()
+    {
+        return view('pages/onlinebrochure_2');
+    }
+    public function onlinebrochure_3()
+    {
+        return view('pages/onlinebrochure_3');
+    }
     public function downloadFile(){
         return $this->response->download(WRITEPATH.'uploads/'.$_GET['item'], null);
     }
