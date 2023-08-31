@@ -2,15 +2,16 @@
 <html>
     <head>
         <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>統計數據</title>
-    <link rel="stylesheet" href="<?= base_url('css/mainarticle.css') ?>">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>統計數據</title>
+        <link rel="stylesheet" href="<?= base_url('css/mainarticle.css') ?>">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     </head>
     <body style="background-color: rgb(69, 95, 192);">
         <?= $this->include("webframe/header") ?>
         <?= $this->include("webframe/sidebar") ?>
         <div class="mainarticle">
+            <h1 class="title">統計數據</h1>
             <ol>
                 <li>招生學校：共 <font color=red>67</font> 所大學校院。
                     <li>招生學系(組)總數：<font color=red>2,229</font> 校系。
