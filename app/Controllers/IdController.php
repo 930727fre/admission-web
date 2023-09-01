@@ -108,6 +108,11 @@ class IdController extends BaseController
         $session->remove("identity");
 
         $session->destroy();
+        $session=session();
+        $session->set([
+            'signedIn' => false
+        ]);
+
 
         // echo $session->get("username");
         // echo $session->get("signedIn");

@@ -21,7 +21,6 @@ class PostController extends BaseController
         {
             echo 'you are not professor';
             echo '<a href="/"><button>回個人頁面</button></a>';
-            return;
         }
         return view('posts/index');
     }
