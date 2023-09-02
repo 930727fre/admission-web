@@ -10,6 +10,10 @@ class PageController extends BaseController
     {
         return view('pages/index');
     }
+    public function time()
+    {
+        return view('pages/time');
+    }
     public function websites()
     {
         return view('pages/websites');
