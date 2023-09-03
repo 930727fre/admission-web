@@ -3,16 +3,17 @@
 <div style = "text -align : center">
 
     <form method="post" action="showSchool" enctype="multipart/form-data">
-        <span>學校科系：</span> <select required>
+        <div>學校科系：</div><br>
+        <select class="form-select" style="width: auto;" required>
             <option value="">請選擇學校</option>
             <?php 
                 foreach($row as $i) 
                     echo '<option value='.$i['school'].'/'.$i['department'].' required>'.$i['school'].$i['department'].'</option>'
             ?>
-        </select><br>
+        </select>
         <input name="school" type="hidden" required><br>
         <input name="department" type="hidden" required><br>
-        <input type="submit" onclick = postData() value="upload" />
+        <input type="submit" class="btn btn-primary" onclick = postData() value="search">
     </form>
 </div>
 
