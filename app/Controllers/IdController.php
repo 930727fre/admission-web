@@ -78,7 +78,7 @@ class IdController extends BaseController
         return view('id/sessionTest.php');
     }
     public function test1(){
-        return view('id/countdown.php',array("message"=>"註冊成功!"));
+        return view("id/test1");
     }
     public function checkUsername(){
         $username = $this->request->getPost('username');
