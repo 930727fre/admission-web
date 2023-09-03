@@ -46,7 +46,7 @@ class ReviseController extends BaseController
         }
         //echo '<h2 style = "text -align : center">修改成功!!<h2>';
         //echo '<a href="/ReviseController/"><button>回個人首頁</button></a>';
-        return view('id/countdown.php',array("message"=>"修改成功!"));
+        return redirect('/');
     }
     public function deleteGrade()
     {
@@ -58,6 +58,11 @@ class ReviseController extends BaseController
     {
         //check session
         $session = session();
+        $control = new TimeController();
+        $result = $control->limitTime(8,16,'hour');
+        if(!$result)
+            return view('filter/notEnter',$msg = ["msg"=>"時間未開放"]);
+
         if($session->get('signedIn')==false)
         {
             echo '你尚未登入';
@@ -93,6 +98,10 @@ class ReviseController extends BaseController
     public function volunteer()
     {
         $session = session();
+        $control = new TimeController();
+        $result = $control->limitTime(8,16,'hour');
+        if(!$result)
+            return view('filter/notEnter',$msg = ["msg"=>"時間未開放"]);
         if($session->get('signedIn')==false)
         {
             echo '你尚未登入';
@@ -142,13 +151,17 @@ class ReviseController extends BaseController
         }
         //print_r($result);
         //echo '<h2 style = "text -align : center">修改成功!!<h2>';
-        return view('id/countdown.php',array("message"=>"修改成功!"));
+        return redirect('/');
         //echo '<a href="/reviseController/"><button>回個人頁面</button></a>';
     }
     public function profile()
     {
         $session = session();
         $identity = $session -> get('identity');
+        $control = new TimeController();
+        $result = $control->limitTime(8,16,'hour');
+        if(!$result)
+            return view('filter/notEnter',$msg = ["msg"=>"時間未開放"]);
         if($session->get('signedIn')==false)
         {
             echo '你尚未登入';
@@ -165,7 +178,6 @@ class ReviseController extends BaseController
         }
         else if($identity == 'professor')
         {
-            //not complete
             $model = new ProfessorModel();
             $num = $model->where('username',$session->get('username'))->first()['id'];
             $data = $model->find($num);
@@ -197,7 +209,7 @@ class ReviseController extends BaseController
             //print_r($data);
             //echo '<h2 style = "text -align : center">修改成功!!<h2>';
             //echo '<a href="/reviseController/"><button>回個人頁面</button></a>';
-            return view('id/countdown.php',array("message"=>"修改成功!"));
+            return redirect('/');
         }
         else if($identity == 'professor')
         {
@@ -216,7 +228,7 @@ class ReviseController extends BaseController
             //print_r($data);
             //echo '<h2 style = "text -align : center">修改成功!!<h2>';
             //echo '<a href="/reviseController/"><button>回個人頁面</button></a>';
-            return view('id/countdown.php',array("message"=>"修改成功!"));
+            return redirect('/');
         }
     }
 

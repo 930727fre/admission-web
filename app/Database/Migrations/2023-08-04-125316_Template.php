@@ -300,6 +300,36 @@ class Template extends Migration
                     'type'=>'VARCHAR',
                     'constraint'=>'100'
                 ],
+                'result1'=>[
+                    'type'=>'INT',
+                    'constraint'=>'100',
+                    'null'=>true
+                ],
+                'result2'=>[
+                    'type'=>'INT',
+                    'constraint'=>'100',
+                    'null'=>true
+                ],
+                'result3'=>[
+                    'type'=>'INT',
+                    'constraint'=>'100',
+                    'null'=>true
+                ],
+                'result4'=>[
+                    'type'=>'INT',
+                    'constraint'=>'100',
+                    'null'=>true
+                ],              
+                'result5'=>[
+                    'type'=>'INT',
+                    'constraint'=>'100',
+                    'null'=>true
+                ],
+                'result6'=>[
+                    'type'=>'INT',
+                    'constraint'=>'100',
+                    'null'=>true
+                ],
             ]
         );
         $this->forge->addKey('id',True);

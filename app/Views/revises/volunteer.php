@@ -9,7 +9,7 @@
                 <option value="">請選擇學校</option>
                 <?php 
                     foreach($row as $i) 
-                        echo '<option value='.$i['school'].'/'.$i['department'].' required>'.$i['school'].$i['department'].'</option>'
+                        echo '<option class ='.$i['school'].'/'.$i['department'].' value='.$i['school'].'/'.$i['department'].' required>'.$i['school'].$i['department'].'</option>'
                 ?>
             </select><br>
             <span>志願序2</span>
@@ -17,7 +17,7 @@
                 <option value="">請選擇學校</option>
                 <?php 
                     foreach($row as $i) 
-                        echo '<option value='.$i['school'].'/'.$i['department'].' required>'.$i['school'].$i['department'].'</option>'
+                        echo '<option class ='.$i['school'].'/'.$i['department'].' value='.$i['school'].'/'.$i['department'].' required>'.$i['school'].$i['department'].'</option>'
                 ?>
             </select><br>
             <span>志願序3</span>
@@ -25,7 +25,7 @@
                 <option value="">請選擇學校</option>
                 <?php 
                     foreach($row as $i) 
-                        echo '<option value='.$i['school'].'/'.$i['department'].' required>'.$i['school'].$i['department'].'</option>'
+                        echo '<option class ='.$i['school'].'/'.$i['department'].' value='.$i['school'].'/'.$i['department'].' required>'.$i['school'].$i['department'].'</option>'
                 ?>
             </select><br>
             <span>志願序4</span>
@@ -33,7 +33,7 @@
                 <option value="">請選擇學校</option>
                 <?php 
                     foreach($row as $i) 
-                        echo '<option value='.$i['school'].'/'.$i['department'].' required>'.$i['school'].$i['department'].'</option>'
+                        echo '<option class ='.$i['school'].'/'.$i['department'].' value='.$i['school'].'/'.$i['department'].' required>'.$i['school'].$i['department'].'</option>'
                 ?>
             </select><br>
             <span>志願序5</span>
@@ -41,7 +41,7 @@
                 <option value="">請選擇學校</option>
                 <?php 
                     foreach($row as $i) 
-                        echo '<option value='.$i['school'].'/'.$i['department'].' required>'.$i['school'].$i['department'].'</option>'
+                        echo '<option class ='.$i['school'].'/'.$i['department'].' value='.$i['school'].'/'.$i['department'].' required>'.$i['school'].$i['department'].'</option>'
                 ?>
             </select><br>
             <span>志願序6</span>
@@ -49,7 +49,7 @@
                 <option value="">請選擇學校</option>
                 <?php 
                     foreach($row as $i) 
-                        echo '<option value='.$i['school'].'/'.$i['department'].' required>'.$i['school'].$i['department'].'</option>'
+                        echo '<option class ='.$i['school'].'/'.$i['department'].' value='.$i['school'].'/'.$i['department'].' required>'.$i['school'].$i['department'].'</option>'
                 ?>
             </select><br>
             <div style="height:20px"></div>
@@ -81,9 +81,46 @@
                 inp[2*i].value = arr[0];
                 inp[2*i+1].value = arr[1];
             }
+        }   
 
-            
-            //same department check
+        var select = document.getElementsByTagName('select');
+        var saveData = [];
+        for (var i = 0; i < 6; i++)
+            select[i].addEventListener('change', hideValue);
+        function hideValue(e)
+        {
+            var select = document.getElementsByTagName('select');
+            for(var el of saveData)
+            {
+                var exsit = 0;
+                for(var i = 0; i < 6; i++)
+                {
+                    if(el == select[i].value)
+                        exsit = 1;
+                }
+                if(!exsit)
+                {
+                    var o = document.getElementsByClassName(el);
+                    newData = saveData.filter(function(value) 
+                    {
+                        return value !== el; // 移除值為 3 的元素
+                    });
+                    saveData = newData;
+                    for(var i = 0; i < 6; i++)
+                    {
+                        o[i].removeAttribute('hidden');
+                        //console.log(o[i]);
+                    }
+                }
+            }
+
+            var o = document.getElementsByClassName(this.value);
+            for(var i = 0; i < 6; i++)
+            {
+                o[i].setAttribute('hidden',true); 
+                //console.log(this.value);
+            }
+            saveData.push(this.value);
         }
     </script>
 <?= $this->endSection() ?>
