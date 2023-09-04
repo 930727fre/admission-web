@@ -32,7 +32,7 @@ class FilterController extends BaseController
             $studentModel = new StudentModel();
             $num = $studentModel->where('username',$session->get('username'))->first()['id'];
             $data = $model -> where('num',$num)->first();
-            
+            print_r($data);
             if($data==null)
             {
                 return view('filter/notEnter',$msg = ["msg"=>"你沒有輸入志願"]);

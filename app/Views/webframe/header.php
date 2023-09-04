@@ -3,7 +3,7 @@
 <header>
       <nav>
         <ul class="menu">
-          <?php $imagePath = base_url('images/caclogo.jpg'); ?>
+          <?php $imagePath = base_url('images/caclogo.png'); ?>
           <li><img class="logo" src="<?php echo $imagePath; ?>" ></li>
           <li class="nav_title">大學甄選入學委員會</li>>
           <li><a href="/uploadController/findSchool">校系分則查詢</a></li>
