@@ -46,8 +46,7 @@ class PostController extends BaseController
         ];
         //print_r($data);
         $model->save($data);
-        echo '<h2 style = "text -align : center">創建貼文成功!!<h2>';
-        echo '<a href="/PostController/"><button>回POST頁面</button></a>';
+        return view("id/countdown.php",array("message"=>"文章創建完成！"));
     }
     public function postList()
     {
@@ -81,10 +80,9 @@ class PostController extends BaseController
             'content' => $this->request->getVar('content'),
             'contentCSS' => 'contentCSS'    //wait CSS
         ];
-        print_r($data);
         $model->update($this->request->getVar('id'),$data);
-        echo '<h2 style = "text -align : center">修改成功!!<h2>';
-        echo '<a href="/PostController/"><button>回POST頁面</button></a>';
+        return view("id/countdown.php",array("message"=>"文章修改完成！"));
+
 
     }
     public function deleteConfirm()

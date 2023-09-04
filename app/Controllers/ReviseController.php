@@ -118,14 +118,15 @@ class ReviseController extends BaseController
             echo '<a href="/"><button>回個人頁面</button></a>';
             return;
         }
-        if($v['school1']!='')
+        if($v != null)
         {
             return view('filter/notEnter',$msg = ["msg"=>"你已經選擇志願"]);
         }
         $schoolModel = new DepartmentModel();
         $data = ["row" => $schoolModel->findAll()];
-        //return view("revises/volunteer",$data);
+        return view("revises/volunteer",$data);
     }
+    
     public function volunteerStore()
     {
         $session = session();
