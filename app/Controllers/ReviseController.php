@@ -201,6 +201,7 @@ class ReviseController extends BaseController
                 'mail' => $this->request->getVar('mail'),
                 'phoneNumber' => $this->request->getVar('phoneNumber'),
                 'relationship' => $this->request->getVar('relationship'),
+                'guardian'=>$this->request->getVar('guardian'),
                 'phoneNumberOfGuardian' => $this->request->getVar('phoneNumberOfGuardian'),
                 'address' => $this->request->getVar('address')
             ];
