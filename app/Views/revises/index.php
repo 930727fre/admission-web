@@ -5,7 +5,7 @@
 <div>
     <h1>資料修改專區</h1>
     <a href="/ReviseController/grade">
-        <button>成績修改</button>
+        <button >成績修改</button>
     </a>
     <br>
     <a href="/ReviseController/volunteer">

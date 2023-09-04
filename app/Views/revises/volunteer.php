@@ -5,7 +5,7 @@
         <h1>上傳志願序</h1>
         <form action="/ReviseController/volunteerStore" enctype="mutipart/form-data" method="POST">
             <span>志願序1</span>
-            <select name="v1" required>
+            <select class="form-select" style="width: auto;" name="v1" required>
                 <option value="">請選擇學校</option>
                 <?php 
                     foreach($row as $i) 
@@ -13,7 +13,7 @@
                 ?>
             </select><br>
             <span>志願序2</span>
-            <select name="v2" required>
+            <select class="form-select" style="width: auto;" name="v2" required>
                 <option value="">請選擇學校</option>
                 <?php 
                     foreach($row as $i) 
@@ -21,7 +21,7 @@
                 ?>
             </select><br>
             <span>志願序3</span>
-            <select name="v3" required>
+            <select class="form-select" style="width: auto;" name="v3" required>
                 <option value="">請選擇學校</option>
                 <?php 
                     foreach($row as $i) 
@@ -29,7 +29,7 @@
                 ?>
             </select><br>
             <span>志願序4</span>
-            <select name="v4" required>
+            <select class="form-select" style="width: auto;" name="v4" required>
                 <option value="">請選擇學校</option>
                 <?php 
                     foreach($row as $i) 
@@ -37,7 +37,7 @@
                 ?>
             </select><br>
             <span>志願序5</span>
-            <select name="v5" required>
+            <select class="form-select" style="width: auto;" name="v5" required>
                 <option value="">請選擇學校</option>
                 <?php 
                     foreach($row as $i) 
@@ -45,7 +45,7 @@
                 ?>
             </select><br>
             <span>志願序6</span>
-            <select name="v6" required>
+            <select class="form-select" style="width: auto;" name="v6" required>
                 <option value="">請選擇學校</option>
                 <?php 
                     foreach($row as $i) 
@@ -65,7 +65,7 @@
             <input name = "Department5" type="hidden" required> 
             <input name = "School6" type="hidden" required> 
             <input name = "Department6" type="hidden" required>
-            <input type = "submit" onclick = postData() value ="上傳志願序">
+            <input type = "submit" class="btn btn-primary" onclick = postData() value ="上傳志願序">
             </form>
     </div>
 

@@ -3,20 +3,31 @@
 <?= $this->section('content') ?>
     <div>
         <h1>文章上傳專區</h1>
-        <br>
-        <a href="/PostController/create">
-            <button>文章上傳</button>
-        </a><br>
-        <a href="/PostController/postList">
-            <button>文章修改</button>
-        </a><br>
-        <a href="/PostController/showAllPost">
-            <button>文章展示</button>
-        </a>
-        <br>
-        <a href="/">
-            <button>首頁</button>
-        </a>
+        <div class="row">
+            <div class="col my-3">
+                <a href="/PostController/create">
+                    <button class="btn btn-primary">文章上傳</button>
+                </a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col my-3">
+                <a href="/PostController/postList">
+                    <button class="btn btn-primary">文章修改</button>
+                </a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col my-3">
+                <a href="/PostController/showAllPost">
+                    <button class="btn btn-primary">文章展示</button>
+                </a>
+            </div>
+        </div>                    
+
+
+
+
     </div>
 <?= $this->endSection() ?>
 

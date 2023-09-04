@@ -13,12 +13,21 @@
         <h1>上傳文章</h1>
         
         <form action="/PostController/storePost" enctype="mutipart/form-data" method="POST" id="md">
-            <!-- <label for="title">標題：</label><br> -->
-            <input type="title" name="title" required><br>
+            <div class="row">
+                <div class="col-2">
+                    <span>標題：</span><br>
+                    <input type="title" name="title" class="form-control" required>
+                </div>
+            </div>
+
+            <span>內文：</span>
             <textarea class="hidden_button" name="content" id="hideContent"></textarea>
-            <!-- <label for="mdInput">內文：</label><br> -->
             <textarea id="mdInput" name="mdInput"></textarea>
-            <input type="submit" onclick=storeData() value="上傳公告">
+            <div class="row">
+                <div class="col-2 my-4">
+                    <input type="submit" class="btn btn-primary" onclick=storeData() value="上傳公告">
+                </div>
+            </div>            
         </form>    
 
     </div>

@@ -1,84 +1,44 @@
-<?= $this->extend('template') ?>
-<?= $this->section('content') ?>
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<?php $session=session()?>
+<link rel="stylesheet" href="<?= base_url('css/sidebar.css') ?>">
+<ul class="side">
+        <li class="sidetop">功能列表</li>
+        <hr style="color:white;width: 140px;">
+        <li><a href="/"><button type="button" class="btn btn-primary" style="font-size: 20px;">回首頁</button></a></li>
+        <li class="studentField"><a href="/ReviseController/grade">成績上傳</a></li>
+        <li class="studentField professorField"><a href="/ReviseController/profile">個資修改</a></li>
+        <li class="professorField"><a href="/PostController">公告上傳</a></li>
+        <li class="studentField"><a href="/filterController/showResult">篩選結果</a></li>
+        <li class="studentField"><a href="/ReviseController/volunteer">志願選填</a></li>
+        <li><a href="/PageController/law">法令規章</a></li>
+        <li><a href="#">重要時程</a></li>
+        <li><a href="/PageController/stats">統計數據</a></li>
+        <li><a href="/PageController/downloads">下載專區</a></li>
+        <li><a href="#">相關網站</a></li>
+        <li class="adminField"><a href="/TimeController/getTime">顯示時間</a></li>
+        <li class="adminField"><a href="/TimeController/setTime">設置時間</a></li>
+</ul>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        if (<?php if (!isset($session)||$session->get("signedIn")==false) { echo "true"; }else{echo "false";} ?>) {
+            var elementsToHide = document.querySelectorAll('.studentField, .professorField, .adminField');
+        }
+        else{
+            if(<?php if(isset($session)&&$session->get("identity")=="student"){echo "true";}else{echo "false";} ?>){
+                if(<?php if(isset($session)&&$session->get("username")!="f"){echo "true";}else{echo "false";} ?>){
+                    var elementsToHide = document.querySelectorAll('.professorField, .adminField');
+                }
+                else{
+                    var elementsToHide = document.querySelectorAll('.professorField');
+                }
+            }
+            else{
+                var elementsToHide = document.querySelectorAll('.studentField, .adminField');
+            }
+        }
 
-    <div class="container">
-        <h1>註冊帳號</h1>
-        <form action="/idController/createAccount" enctype="multipart/form-data" method="post">
-            <div class="row my-2" >
-                <div class="col form-group">
-                    <label for="identity">身份: </label>
-                    <select name="identity" id="identity" class="form-select" style="width: auto;">
-                        <option value="student">學生</option>
-                        <option value="professor">教授</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="row my-2" >
-                <div class="col-4 form-group">
-                    <label for="fullname">姓名: </label>
-                    <input type="text" name="fullname" id="fullname" class="form-control" required>
-                </div>
-            </div>
-            <div class="row my-2" >
-                <div class="col-4 form-group">
-                    <label for="mail">Mail: </label>
-                    <input type="email" name="mail" id="mail" class="form-control"required>                  
-                </div>
-            </div>
-            <div class="row my-2" >
-                <div class="col-4 form-group">
-                    <label for="username" id="usernameLabel">
-                        Username: <span id="username_warning" style="color: red;"></span>
-                    </label>
-                    <input type="text" name="username" id="username" class="form-control"required>                    
-                </div>
-            </div>                        
-
-
-            <div class="row my-2" >
-                <div class="col-4 form-group">
-                    <label for="password">密碼: </label>
-                    <input type="password" name="password" id="password" class="form-control"required>               
-                </div>
-            </div>       
-            <div class="row my-4">
-                <div class="col-4 form-group">
-                    <button class="btn btn-primary"  id="register_button">submit</button>
-                </div>
-            </div>                                        
-
-            <script>
-                // JavaScript code to handle the username availability check
-                $(document).ready(function () {
-                    $('#username').on('input', function () {
-                        const username = $(this).val();
-                        const identity = $('#identity').val(); // Get the value of the identity select
-                        console.log("hi")
-                        // Make an AJAX request to check username availability
-                        $.ajax({
-                            type: 'POST',
-                            url: '/idController/checkUsername', // Replace with the URL to your server-side script
-                            data: { username: username, identity: identity }, // Pass both username and identity
-                            success: function (data) {
-                                if (data === 'taken') {
-                                    $('#username_warning').text('This username is used.');
-                                    $('#usernameLabel').addClass('disabled-label'); // Add a class to the label
-                                    $('#register_button').addClass('disabled'); // Disable the button
-                                } else {
-                                    $('#username_warning').text('');
-                                    $('#usernameLabel').removeClass('disabled-label'); // Remove the class from the label
-                                    $('#register_button').removeClass('disabled'); // Enable the button
-                                }
-                            }
-                        });
-                    });
-                });
-                
-            </script>
-        </form>
-    </div>
-
-
-<?= $this->endSection() ?>
+        for (var i = 0; i < elementsToHide.length; i++) {
+            elementsToHide[i].setAttribute("hidden",""); // Add the class that you want to add
+        }
+    });
+   
+</script>
