@@ -100,6 +100,10 @@ class ReviseController extends BaseController
         $session = session();
         $control = new TimeController();
         $result = $control->limitTime(8,16,'hour');
+        $model = new VolunteerModel();
+        $StudentModel = new StudentModel();
+        $num = $StudentModel->where('username',$session->get('username'))->first()['id'];
+        $v = $model->find($num);
         if(!$result)
             return view('filter/notEnter',$msg = ["msg"=>"時間未開放"]);
         if($session->get('signedIn')==false)
@@ -114,9 +118,13 @@ class ReviseController extends BaseController
             echo '<a href="/"><button>回個人頁面</button></a>';
             return;
         }
+        if($v['school1']!='')
+        {
+            return view('filter/notEnter',$msg = ["msg"=>"你已經選擇志願"]);
+        }
         $schoolModel = new DepartmentModel();
         $data = ["row" => $schoolModel->findAll()];
-        return view("revises/volunteer",$data);
+        //return view("revises/volunteer",$data);
     }
     public function volunteerStore()
     {
