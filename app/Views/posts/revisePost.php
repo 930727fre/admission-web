@@ -13,17 +13,19 @@
         <h1>修改文章</h1>
         <?php echo '<textarea class="hidden_button" id="text">'.$posts['content'].' </textarea>'?>
         <form action="/PostController/reviseStore" enctype="mutipart/form-data" method="POST" id="md">
-            <!-- <label for="title">標題：</label><br> -->
+            <label for="title">標題：</label><br>
+
             <?php echo '<input id = "title" name="title" required value='.$posts['title'].'  >' ?><br>
             <?php echo '<textarea class="hidden_button" name="content" id="newText"></textarea>'?>
-            <!-- <label for="mdInput">內文：</label><br> -->
+            <label for="mdInput">內文：</label><br>
             <textarea id="mdInput" name="mdInput"></textarea>
             <?php echo '<input name="id" class="hidden_button" value='.$posts['id'].'>' ?>
-            <input type="submit" onclick=storeData() value="修改公告">
+            <input type="submit" class="btn btn-primary" onclick=storeData() value="修改公告">
         </form>    
+        <br>
         <form action="/PostController/delete" enctype="mutipart/form-data" method="POST">
             <?php echo '<input name="id" class="hidden_button" value='.$posts['id'].'>' ?>
-            <button type = "submit">刪除文章</button>
+            <button type = "submit" class="btn btn-primary">刪除文章</button>
         </form>
     </div>
 

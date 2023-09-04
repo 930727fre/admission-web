@@ -126,6 +126,7 @@ class ReviseController extends BaseController
         $data = ["row" => $schoolModel->findAll()];
         return view("revises/volunteer",$data);
     }
+    
     public function volunteerStore()
     {
         $session = session();
