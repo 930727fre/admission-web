@@ -14,7 +14,7 @@
         <li><a href="/PageController/time">重要時程</a></li>
         <li><a href="/PageController/stats">統計數據</a></li>
         <li><a href="/PageController/downloads">下載專區</a></li>
-        <li><a href="#">相關網站</a></li>
+        <li><a href="/PageController/websites">相關網站</a></li>
         <li class="adminField"><a href="/TimeController/getTime">顯示時間</a></li>
         <li class="adminField"><a href="/TimeController/setTime">設置時間</a></li>
 </ul>
