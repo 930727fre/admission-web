@@ -1,7 +1,6 @@
 .side{
     background-color: rgb(33, 37, 41);
     height: auto;
-    z-index: 1;
     width: 190px;
     position: absolute;
     top: 120px;

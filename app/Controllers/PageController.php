@@ -6,9 +6,17 @@ use App\Controllers\BaseController;
 
 class PageController extends BaseController
 {
+    public function universityweb()
+    {
+        return view('pages/universityweb');
+    }
     public function index()
     {
         return view("index.php");
+    }
+    public function time()
+    {
+        return view('pages/time');
     }
     public function websites()
     {

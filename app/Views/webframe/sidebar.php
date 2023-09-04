@@ -11,7 +11,7 @@
         <li class="studentField"><a href="/filterController/showResult">篩選結果</a></li>
         <li class="studentField"><a href="/ReviseController/volunteer">志願選填</a></li>
         <li><a href="/PageController/law">法令規章</a></li>
-        <li><a href="#">重要時程</a></li>
+        <li><a href="/PageController/time">重要時程</a></li>
         <li><a href="/PageController/stats">統計數據</a></li>
         <li><a href="/PageController/downloads">下載專區</a></li>
         <li><a href="#">相關網站</a></li>
