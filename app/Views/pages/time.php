@@ -22,8 +22,8 @@
                 <li>正取生報到及備取生遞補、報到一律採行統一分發，故「申請入學」錄取生、「離島地區及原住民籍高級中等學校應屆畢業生升學國(市)立師範及教育大學聯合保送甄試」錄取生及「原住民族及離島地區醫事人員養成計畫公費生甄試」錄取生，應同時於登記期間內完成網路就讀志願序登記，參加統一分發，否則視同放棄錄取資格，不予分發。</li>
                 <li><b>本招生若因受嚴重特殊傳染性肺炎(COVID-19)疫情影響或配合防疫，致校系無法如期辦理或考生無法如期參加第二階段指定項目甄試(如筆試、面試、實作等)時，將另行於甄選委員會網站（https://www.cac.edu.tw/）公告「112學年度大學申請入學管道因應疫情應變機制」。</b></li>
             </ol>
-        <table style="font-size: 27px; text-align: center;">
-            <tr>
+        <table border="1" class="ttt">
+            <tr style="text-align: center;">
                 <th>項目</th>
                 <th>日期</th>
             </tr>
@@ -41,12 +41,31 @@
                 每日上午 9 時起至下午 5 時止</td>
             </tr>
             <tr>
-              <td></td>
-              <td></td>
+              <td>財團法人大學入學考試中心基金會學科能力測驗</td>
+              <td>	112.01.13（五）至 112.01.15（日）</td>
+            </tr>
+            <tr>
+              <td>甄選委員會公告免檢定高中英語聽力測驗審查結果</td>
+              <td>	112.01.30（一）下午2時</td>
+            </tr>
+            <tr>
+              <td>大學術科考試委員會聯合會術科考試</td>
+              <td>音樂組：112.02.01（三）至 112.02.04（六）<br>
+                美術組：112.02.05（日）至 112.02.06（一）<br>
+                體育組：112.02.07（二）至 112.02.09（四）</td>
             </tr>
         </table>
       </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
   </body>
+  <style>
+    .ttt{
+      width: 100%;
+      font-size: 20px;
+      border-style: solid;
+      border-color: aliceblue;
+      padding: 5px 20px;
+    }
+  </style>
 </html>
